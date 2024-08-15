@@ -5,7 +5,7 @@ function caesarCipher () {
     let shitedUpcase = new Array(26).fill('');
     const shift = 3;
     //shift 2 alphabet array depending on shift
-    for(let i = shift-1,j =0; j<lowcaseStandard.length; i++,j++){
+    for(let i = shift,j =-shift; j<(lowcaseStandard.length)-1; i++,j++){
         //console.log(lowcaseStandard[i])
     }
     shiftedLowcase[3] = lowcaseStandard[3]
