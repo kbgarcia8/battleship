@@ -1,0 +1,12 @@
+Game Notes
+
+1. A ship is sunk when all squares are hit
+2. Classes of ship
+No.	Class of ship	Size
+1	Carrier	        5
+2	Battleship	    4
+3	Destroyer	    3
+4	Submarine	    3
+5	Patrol Boat	    2
+
+3. Gameboard is 10X10
