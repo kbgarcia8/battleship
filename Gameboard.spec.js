@@ -1,6 +1,6 @@
 const test = require('./test')
 
-describe("tester", () => {
+describe("gameboard", () => {
   test("return the following array properties", () => {
     const result = analyzeArray([1,8,3,4,2,6]);
 
