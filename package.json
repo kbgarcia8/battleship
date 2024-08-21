@@ -4,7 +4,8 @@
   "description": "",
   "main": "test.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "watch": "jest --watch Ships.spec.js"
   },
   "keywords": [],
   "author": "",
