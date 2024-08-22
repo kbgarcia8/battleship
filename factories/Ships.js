@@ -5,13 +5,7 @@ class Ships {
     this.numHit = 0,
     this.sunk= false,
     this.orientation= 'vertical',
-    this.position= [
-      [2, 1],
-      [2, 2],
-      [2, 3],
-      [2, 4],
-      [2, 5],
-    ]
+    this.position= this.initializePosition(this.length)
   }
     hit(index) {
       if (this.position[index] !== "X") {
@@ -25,6 +19,10 @@ class Ships {
       if (this.length == this.numHit) return true;
 
       return false;
+    }
+    initializePosition(length) {
+      const initialPosArr = new Array(length).fill([null,null])
+      return initialPosArr
     }
 }
 
