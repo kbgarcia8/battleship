@@ -1,15 +1,29 @@
-const test = require('./test')
+const Gameboard = require("./Gameboard.js");
+const Ships = require("./Ships.js");
 
-describe("gameboard", () => {
-  test("return the following array properties", () => {
-    const result = analyzeArray([1,8,3,4,2,6]);
-
-    // Check if the result equals the expected object
-    expect(result).toEqual({
-        average: 4,
-        min: 1,
-        max: 8,
-        length: 6
-     });
-  });
+/*beforeAll(() => {
+  return (ship = Ships("carrier", 5));
+});*/
+//receiveAttack
+//missedAttack
+//If all ship is sunk = gameover
+//creation of blank gameboard
+test("test creation of gameboard", () => {
+  const gameboard = Gameboard();
+  const expectedObject = {
+    gameboardArray =[
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+    ]
+  }
+  expect(gameboard.gameboardArray).toMatchObject(expectedObject);
 });
+//placing of created  ship && checking if placement is valid
