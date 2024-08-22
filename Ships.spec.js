@@ -1,7 +1,7 @@
 const Ships = require("./Ships.js");
 
 beforeAll(() => {
-  return (ship = Ships("carrier", 5));
+  return (ship = new Ships("carrier", 5));
 });
 test("test creation of ship", () => {
   const expectedObject = {
@@ -11,11 +11,11 @@ test("test creation of ship", () => {
     sunk: false,
     orientation: 'vertical',
     position: [
-      [2,1],
-      [2,2],
-      [2,3],
-      [2,4],
-      [2,5],
+      [2, 1],
+      [2, 2],
+      [2, 3],
+      [2, 4],
+      [2, 5],
     ],
   };
   expect(ship).toMatchObject(expectedObject);
@@ -27,13 +27,13 @@ test("test hit a ship position", () => {
     length: 5,
     numHit: 1,
     sunk: false,
-    orientation: 'vertical',    
+    orientation: 'vertical',
     position: [
-      [2,1],
-      [2,2],
-      [2,3],
-      [2,4],
-      [2,5],
+      [2, 1],
+      [2, 2],
+      [2, 3],
+      [2, 4],
+      [2, 5],
     ],
   };
   expect(ship.hit()).toEqual(expectedObject['numHit']);
