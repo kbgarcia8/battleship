@@ -1,4 +1,4 @@
-const Ships = require("./Ships.js");
+const Ships = require("./factories/Ships.js");
 
 beforeAll(() => {
   return (ship = new Ships("carrier", 5));

@@ -1,5 +1,5 @@
-const Gameboard = require("./Gameboard.js");
-const Ships = require("./Ships.js");
+const Gameboard = require("./factories/Gameboard.js");
+const Ships = require("./factories/Ships.js");
 
 /*beforeAll(() => {
   return (ship = Ships("carrier", 5));
