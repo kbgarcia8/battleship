@@ -55,6 +55,9 @@ class Gameboard {
     return this.gameboardArray
   }
   //if (this.gameboardArray[x][y] == null) -> add this in check if placement is valid
+  isPlacementValid() {
+    
+  }
 }
 
 module.exports = Gameboard;
