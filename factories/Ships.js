@@ -4,7 +4,7 @@ class Ships {
     this.length =length,
     this.numHit = 0,
     this.sunk= false,
-    this.orientation= 'vertical',
+    this.orientation= "",
     this.position= this.initializePosition(this.length)
   }
     hit(index) {
@@ -21,7 +21,10 @@ class Ships {
       return false;
     }
     initializePosition(length) {
-      const initialPosArr = new Array(length).fill([null,null])
+      const initialPosArr = []
+      for (let i=0; i<length; i++){
+        initialPosArr.push([null,null])
+      }
       return initialPosArr
     }
 }
