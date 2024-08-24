@@ -1,7 +1,7 @@
 const Ships = require("../factories/Ships");
 
 beforeAll(() => {
-  return (ship = new Ships("carrier", 4));
+  return (ship = new Ships("carrier", 5));
 });
 test("test creation of ship", () => {
   const expectedObject = {
@@ -9,7 +9,7 @@ test("test creation of ship", () => {
     length: 5,
     numHit: 0,
     sunk: false,
-    orientation: "vertical",
+    orientation: "",
     position: [
       [null, null],
       [null, null],
@@ -27,7 +27,7 @@ test("test hit a ship position", () => {
     length: 5,
     numHit: 1,
     sunk: false,
-    orientation: "vertical",
+    orientation: "",
     position: [
       [null, null],
       [null, null],
@@ -53,6 +53,7 @@ test("test if ship is position is initialized", () => {
     [null, null],
     [null, null],
     [null, null],
+    [null, null]
   ];
   expect(ship.initializePosition(ship.length)).toEqual(expectedObject);
 });
