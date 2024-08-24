@@ -1,5 +1,4 @@
 const Gameboard = require("../factories/Gameboard.js");
-const Ships = require("../factories/Ships.js");
 
 beforeEach(() => {
   gameboard = new Gameboard()
@@ -42,7 +41,7 @@ test("test initialization of ship", () => {
         length: 5,
         numHit: 0,
         sunk: false,
-        orientation: "vertical",
+        orientation: "",
         position: [
           [null, null],
           [null, null],
@@ -56,7 +55,7 @@ test("test initialization of ship", () => {
         length: 4,
         numHit: 0,
         sunk: false,
-        orientation: "vertical",
+        orientation: "",
         position: [
           [null, null],
           [null, null],
@@ -69,7 +68,7 @@ test("test initialization of ship", () => {
         length: 3,
         numHit: 0,
         sunk: false,
-        orientation: "vertical",
+        orientation: "",
         position: [
           [null, null],
           [null, null],
@@ -81,7 +80,7 @@ test("test initialization of ship", () => {
         length: 3,
         numHit: 0,
         sunk: false,
-        orientation: "vertical",
+        orientation: "",
         position: [
           [null, null],
           [null, null],
@@ -93,7 +92,7 @@ test("test initialization of ship", () => {
         length: 2,
         numHit: 0,
         sunk: false,
-        orientation: "vertical",
+        orientation: "",
         position: [
           [null, null],
           [null, null]
@@ -106,6 +105,7 @@ test("test initialization of ship", () => {
 //placing of created ship
 test("test placement of ship on the gameboard", () => {
   const expectedObject = [
+  [
     ["carrier", "carrier", "carrier", "carrier", "carrier", null, null, null, null, null],
     [null, null, null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null, null, null],
@@ -116,13 +116,78 @@ test("test placement of ship on the gameboard", () => {
     [null, null, null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null, null, null],
+  ],
+  [
+    {
+      name: "carrier",
+      length: 5,
+      numHit: 0,
+      sunk: false,
+      orientation: "",
+      position: [
+        [0,0],
+        [0,1],
+        [0,2],
+        [0,3],
+        [0,4],
+      ],
+    },
+    {
+      name: "battleship",
+      length: 4,
+      numHit: 0,
+      sunk: false,
+      orientation: "",
+      position: [
+        [null, null],
+        [null, null],
+        [null, null],
+        [null, null]
+      ],
+    },
+    {
+      name: "destroyer",
+      length: 3,
+      numHit: 0,
+      sunk: false,
+      orientation: "",
+      position: [
+        [null, null],
+        [null, null],
+        [null, null]
+      ],
+    },
+    {
+      name: "submarine",
+      length: 3,
+      numHit: 0,
+      sunk: false,
+      orientation: "",
+      position: [
+        [null, null],
+        [null, null],
+        [null, null]
+      ],
+    },
+    {
+      name: "patrol boat",
+      length: 2,
+      numHit: 0,
+      sunk: false,
+      orientation: "",
+      position: [
+        [null, null],
+        [null, null]
+      ],
+    }
   ]
+]
   expect(gameboard.placeShip("carrier", [0, 0], 'horizontal')).toMatchObject(expectedObject);
 });
 //test placement of ship if valid
-test("test placement of ship on the gameboard", () => {
-  const expectedOut = ""
-  expect(gameboard.isPlacementValid("carrier", [0, 0], 'horizontal')).toMatchObject(expectedObject);
+test("test ", () => {
+  const expectedOut = false
+  expect(gameboard.isPlacementValid("battleship", [0, 0], 'horizontal')).toMatchObject(expectedOut);
 });
 //receiveAttack
 //missedAttack
