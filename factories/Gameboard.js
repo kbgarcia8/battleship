@@ -55,7 +55,11 @@ class Gameboard {
     return this.gameboardArray
   }
   //if (this.gameboardArray[x][y] == null) -> add this in check if placement is valid
+<<<<<<< HEAD
   isPlacementValid(coord,length) {
+=======
+  isPlacementValid() {
+>>>>>>> 55bfc5c5eec634a9b5e83f3dc946c2f0bb26f300
     
   }
 }

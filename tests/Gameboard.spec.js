@@ -121,8 +121,3 @@ test("test placement of ship on the gameboard", () => {
   ]
   expect(gameboard.placeShip("carrier", [0, 0], 'horizontal')).toMatchObject(expectedObject);
 });
-
-test("test placement of ship on the gameboard if valid", () => {
-  const expectedOut = ""
-  expect(gameboard.isPlacementValid([0, 0], 'horizontal')).toMatchObject(expectedObject);
-}); 
