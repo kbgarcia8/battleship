@@ -55,11 +55,21 @@ class Gameboard {
     return this.gameboardArray
   }
   //if (this.gameboardArray[x][y] == null) -> add this in check if placement is valid
-<<<<<<< HEAD
-  isPlacementValid(coord,length) {
-=======
-  isPlacementValid() {
->>>>>>> 55bfc5c5eec634a9b5e83f3dc946c2f0bb26f300
+  isPlacementValid(name, coord, orientation) {
+    const re = new RegExp(name, "g");
+    let currShipName = "";
+    let currShipLength = 0;
+    for (let i = 0; i < this.shipsArray.length; i++) {
+      if (this.shipsArray[i].name.match(re)) {
+        currShipName = this.shipsArray[i].name
+        currShipLength = this.shipsArray[i].length
+      }
+    }
+    const [x, y] = coord;    
+    //depending on length and orientation check if starting point
+    //is valid by making the coordinate the end point then run check
+    //inside loop if if x and/or y not > 10 and < 0
+    //check if x and/or y not > 10 and < 0 first hand (might be optional)
     
   }
 }

@@ -4,9 +4,7 @@ const Ships = require("../factories/Ships.js");
 beforeEach(() => {
   gameboard = new Gameboard()
 });
-//receiveAttack
-//missedAttack
-//If all ship is sunk = gameover
+
 //creation of blank gameboard
 test("test creation of gameboard", () => {
   const expectedObject = [
@@ -105,7 +103,7 @@ test("test initialization of ship", () => {
   }
   expect(gameboard).toMatchObject(expectedObject);
 });
-//placing of created ship && checking if placement is valid
+//placing of created ship
 test("test placement of ship on the gameboard", () => {
   const expectedObject = [
     ["carrier", "carrier", "carrier", "carrier", "carrier", null, null, null, null, null],
@@ -121,3 +119,11 @@ test("test placement of ship on the gameboard", () => {
   ]
   expect(gameboard.placeShip("carrier", [0, 0], 'horizontal')).toMatchObject(expectedObject);
 });
+//test placement of ship if valid
+test("test placement of ship on the gameboard", () => {
+  const expectedOut = ""
+  expect(gameboard.isPlacementValid("carrier", [0, 0], 'horizontal')).toMatchObject(expectedObject);
+});
+//receiveAttack
+//missedAttack
+//If all ship is sunk = gameover
