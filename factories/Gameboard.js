@@ -78,7 +78,7 @@ class Gameboard {
   }
 }
 
-gameboard = new Gameboard()
+/*gameboard = new Gameboard()
 gameboard.placeShip("carrier", [0, 0], 'horizontal')
-console.log(gameboard.shipsArray[0])
-//module.exports = Gameboard;
+console.log(gameboard.shipsArray[0])*/
+module.exports = Gameboard;
