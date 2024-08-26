@@ -5,7 +5,6 @@ class Gameboard {
     this.gameboardArray = this.createGameboard()
     this.shipsArray = this.initializeShipsArray()
   }
-
   createGameboard() {
     let gameArray = [
         [null, null, null, null, null, null, null, null, null, null],
@@ -21,7 +20,6 @@ class Gameboard {
       ]
     return gameArray
   }
-
   initializeShipsArray() {
     const shipsArr = []
     shipsArr.push(new Ships("carrier", 5))
@@ -31,8 +29,7 @@ class Gameboard {
     shipsArr.push(new Ships("patrol boat", 2))
     return shipsArr
   }
-
-  placeShip(name, coord, orientation) {
+  placeShip(name, coords, orientation) {
     const re = new RegExp(name, "g");
     let currShipName = "";
     let currShipLength = 0;
@@ -41,7 +38,7 @@ class Gameboard {
         currShipName = this.shipsArray[i].name
         currShipLength = this.shipsArray[i].length
         this.shipsArray[i].orientation = orientation
-        const [x, y] = coord;
+        const [x, y] = coords;
         if (orientation == 'horizontal') {
           for (let j = 0; j < currShipLength; j++) {
             this.gameboardArray[x][y + j] = currShipName
@@ -59,8 +56,7 @@ class Gameboard {
       }
     }
   }
-  //if (this.gameboardArray[x][y] == null) -> add this in check if placement is valid
-  isPlacementValid(name, coord, orientation) {
+  isPlacementValid(name, coords, orientation) {    
     const re = new RegExp(name, "g");
     let currShipName = "";
     let currShipLength = 0;
@@ -70,11 +66,22 @@ class Gameboard {
         currShipLength = this.shipsArray[i].length
       }
     }
-    const [x, y] = coord;
-    //depending on length and orientation check if starting point
-    //is valid by making the coordinate the end point 
-    //then run check inside loop if if x and/or y not > 10 and < 0
-    //check if x and/or y not > 10 and < 0 first hand (might be optional)    
+    const [x, y] = coords;
+    if(x>10||x<0||y>10||y<0) return false
+      if (orientation == 'horizontal' && y+currShipLength<10) {
+        for (let j = 0; j < currShipLength; j++) {
+          if(this.gameboardArray[x][y + j] !== null) return false
+          return true
+        }
+      } else if (orientation == 'vertical' && x+currShipLength<10) {
+        for (let k = 0; k < currShipLength; k++) {
+          if(this.gameboardArray[x + i][y] !== null) return false
+          return true
+        }
+      }
+  }
+  receiveAttack(coords) {
+    
   }
 }
 

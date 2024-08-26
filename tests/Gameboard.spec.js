@@ -4,7 +4,6 @@ beforeEach(() => {
   gameboard = new Gameboard()
 });
 
-//creation of blank gameboard
 test("test creation of gameboard", () => {
   const expectedObject = [
     [null, null, null, null, null, null, null, null, null, null],
@@ -20,7 +19,6 @@ test("test creation of gameboard", () => {
   ]
   expect(gameboard.gameboardArray).toMatchObject(expectedObject);
 });
-//initiliaze/create 5 ships for the game
 test("test initialization of ship", () => {
   const expectedObject = {
     gameboardArray: [
@@ -102,7 +100,6 @@ test("test initialization of ship", () => {
   }
   expect(gameboard).toMatchObject(expectedObject);
 });
-//placing of created ship
 test("test placement of ship on the gameboard", () => {
   const expectedObject = [
   [
@@ -123,7 +120,7 @@ test("test placement of ship on the gameboard", () => {
       length: 5,
       numHit: 0,
       sunk: false,
-      orientation: "",
+      orientation: "horizontal",
       position: [
         [0,0],
         [0,1],
@@ -184,11 +181,22 @@ test("test placement of ship on the gameboard", () => {
 ]
   expect(gameboard.placeShip("carrier", [0, 0], 'horizontal')).toMatchObject(expectedObject);
 });
-//test placement of ship if valid
-test("test ", () => {
+test("fail test for placement has obstruction", () => {
   const expectedOut = false
-  expect(gameboard.isPlacementValid("battleship", [0, 0], 'horizontal')).toMatchObject(expectedOut);
+  expect(gameboard.isPlacementValid("battleship", [0, 0], 'horizontal')).toBe(expectedOut);
+});
+test("pass test for placement has obstruction", () => {
+  const expectedOut = true
+  expect(gameboard.isPlacementValid("battleship", [1, 1], 'horizontal')).toBe(expectedOut);
+});
+test("fail test for placement exceeding gameboard", () => {
+  const expectedOut = true
+  expect(gameboard.isPlacementValid("battleship", [1, 7], 'horizontal')).toBe(expectedOut);
 });
 //receiveAttack
+test("test receive attack on a ship", () => {
+  const expectedObject = []
+  expect(gameboard.receiveAttack([0, 0])).toMatchObject(expectedOut);
+});
 //missedAttack
 //If all ship is sunk = gameover
