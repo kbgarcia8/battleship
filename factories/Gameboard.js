@@ -40,6 +40,7 @@ class Gameboard {
       if (this.shipsArray[i].name.match(re)) {
         currShipName = this.shipsArray[i].name
         currShipLength = this.shipsArray[i].length
+        this.shipsArray[i].orientation = orientation
         const [x, y] = coord;
         if (orientation == 'horizontal') {
           for (let j = 0; j < currShipLength; j++) {
@@ -77,7 +78,7 @@ class Gameboard {
   }
 }
 
-/*gameboard = new Gameboard()
+gameboard = new Gameboard()
 gameboard.placeShip("carrier", [0, 0], 'horizontal')
-console.log(gameboard.shipsArray[0])*/
-module.exports = Gameboard;
+console.log(gameboard.shipsArray[0])
+//module.exports = Gameboard;
