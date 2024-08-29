@@ -20,7 +20,6 @@ test("test creation of ship", () => {
   };
   expect(ship).toMatchObject(expectedObject);
 });
-
 test("test hit a ship position", () => {
   const expectedObject = {
     name: "carrier",
@@ -38,7 +37,6 @@ test("test hit a ship position", () => {
   };
   expect(ship.hit()).toEqual(expectedObject["numHit"]);
 });
-
 test("test if ship is sunk", () => {
   ship.hit(0);
   ship.hit(1);
@@ -46,7 +44,6 @@ test("test if ship is sunk", () => {
   ship.hit(3);
   expect(ship.isSunk()).toBe(true);
 });
-
 test("test if ship is position is initialized", () => {
   const expectedObject = [
     [null, null],
