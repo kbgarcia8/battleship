@@ -1,3 +1,5 @@
+[![Run on repl.it](https://repl.it/badge/github/amasad/jest-playground)](https://repl.it/github/amasad/jest-playground}&ref=button)
+
 # Battlesship Webpage
 This is web page to play the game "Battleship" developed using HTML, CSS and Javascript
 ### Type: Learning
@@ -14,7 +16,12 @@ This is web page to play the game "Battleship" developed using HTML, CSS and Jav
 ### <u>Action Tracker</u>
 
 #### Node/Tab/Page/Stage: View
-1. 
+1. Header
+2. Game Environment
+    a. Player Gameboard
+    b. AI Gameboard
+    c. Start Game Button
+3. Footer
 
 #### Node/Tab/Page/Stage: Release/Live/Deploy
 1. Create and setup repository using webpack:
