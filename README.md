@@ -1,5 +1,3 @@
-[![Run on repl.it](https://repl.it/badge/github/amasad/jest-playground)](https://repl.it/github/amasad/jest-playground}&ref=button)
-
 # Battlesship Webpage
 This is web page to play the game "Battleship" developed using HTML, CSS and Javascript
 ### Type: Learning
