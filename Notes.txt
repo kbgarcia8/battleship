@@ -4,7 +4,7 @@ Flow of web page/game before start
     b.1. Draggable ships
     b.2. Rotateable ships
       - Drag and Drop API (first seen on W3School)
-      - CSS Grid Items
+      - CSS Grid Items (first seen on W3School)
       - JS/HTML Canvas
       - drag/drop eventlisteners
     b.3. Test response and reflect of data on gameboardArray and shipsArray once ships are placed
