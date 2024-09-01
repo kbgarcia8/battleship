@@ -14,7 +14,12 @@ This is web page to play the game "Battleship" developed using HTML, CSS and Jav
 ### <u>Action Tracker</u>
 
 #### Node/Tab/Page/Stage: View
-1. 
+1. Header
+2. Game Environment
+    a. Player Gameboard
+    b. AI Gameboard
+    c. Start Game Button
+3. Footer
 
 #### Node/Tab/Page/Stage: Release/Live/Deploy
 1. Create and setup repository using webpack:
