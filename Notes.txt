@@ -15,3 +15,7 @@ Needed knowledge/planning:
 1. Drag and drop of html elements
 2. Custom attributes in HTML
 3. 
+
+Repository Reference/s:
+1. https://github.com/EmptyBox12/battleship/blob/main/src/index.js
+2. https://github.com/jcccc4/battleship/blob/main/src/style.css
