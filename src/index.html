@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../src/styles/style.css"> <!--applying style to be used-->
   </head>
   <body>
-	<script src="./index.js"></script>
   <div class="header">Battleship</div>
   <div class="player-side">
     <p class="player-name">Player's Board</p>
@@ -227,30 +226,30 @@
       ⬅ Please add your ships to your board
     </p>
     <div class="ships-container">
-      <div class="carrier-container">
+      <div class="carrier-container" id="carrier" draggable="true">
         <div class="carrier"></div>
         <div class="carrier"></div>
         <div class="carrier"></div>
         <div class="carrier"></div>
         <div class="carrier"></div>
       </div>
-      <div class="battleship-container">
+      <div class="battleship-container" id="battleship">
         <div class="battleship"></div>
         <div class="battleship"></div>
         <div class="battleship"></div>
         <div class="battleship"></div>
       </div>
-      <div class="destroyer-container">
+      <div class="destroyer-container" id="destroyer">
         <div class="destroyer"></div>
         <div class="destroyer"></div>
         <div class="destroyer"></div>
       </div>
-      <div class="submarine-container">
+      <div class="submarine-container" id="submarine">
         <div class="submarine"></div>
         <div class="submarine"></div>
         <div class="submarine"></div>
       </div>
-      <div class="patrol-boat-container">
+      <div class="patrol-boat-container" id="patrol-boat">
         <div class="patrol-boat"></div>
         <div class="patrol-boat"></div>
       </div>
@@ -264,5 +263,6 @@
   <div class="footer">
     Created by Karl Garcia (github.com/kbgarcia8)
   </div>
+  <script src="./index.js"></script>
   </body>
 </html>
