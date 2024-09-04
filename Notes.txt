@@ -3,19 +3,19 @@ Flow of web page/game before start
   b. Pre-positioned ships
     b.1. Draggable ships
     b.2. Rotateable ships
-      - Drag and Drop API (first seen on W3School)
-      - CSS Grid Items (first seen on W3School)
-      - JS/HTML Canvas
-      - drag/drop eventlisteners
     b.3. Test response and reflect of data on gameboardArray and shipsArray once ships are placed
   c. AI Gameboard at Right
     c.1. Same as player but random position and attack
-    
-Needed knowledge/planning:
-1. Drag and drop of html elements
-2. Custom attributes in HTML
-3. 
+
+Term dumps:
+1. insertAdjacentElement()
+2. drag and drop API
 
 Repository Reference/s:
 1. https://github.com/EmptyBox12/battleship/blob/main/src/index.js
 2. https://github.com/jcccc4/battleship/blob/main/src/style.css
+
+Open Items:
+1. Connect gameboard DOM with gameboard object's gameboardArray
+2. Create DOM.js
+  - Creation of gameboard is simultaneous between dom and object
