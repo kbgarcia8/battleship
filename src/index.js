@@ -12,7 +12,14 @@ const cells = document.querySelectorAll(".player-cell");
 cells.forEach((cell) => {
   cell.addEventListener("dragover", (e) => {
     e.preventDefault();
-    console.log("dragged over")
+  });
+  cell.addEventListener("drop", (e) => {
+    e.preventDefault();
+    console.log("dropped")
+    var data = e.dataTransfer.getData("text")
+    //e.target.appendSibling(document.getElementById(data));
+    //e.target.insertAdjacentElement("afterend", document.getElementById(data))
+    //console.log(e.target.dataset.y)
   });
 });
 dragStarter(carrier);
