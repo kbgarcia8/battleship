@@ -10,14 +10,259 @@
     <link rel="stylesheet" href="../src/styles/style.css"> <!--applying style to be used-->
   </head>
   <body>
-	<script src="./index.js"></script>
   <div class="header">Battleship</div>
   <div class="player-side">
-    
+    <p class="player-name">Player's Board</p>
+    <div class="player-board">
+      <div class="player-cell" data-x="0" data-y="0"></div>
+      <div class="player-cell" data-x="0" data-y="1"></div>
+      <div class="player-cell" data-x="0" data-y="2"></div>
+      <div class="player-cell" data-x="0" data-y="3"></div>
+      <div class="player-cell" data-x="0" data-y="4"></div>
+      <div class="player-cell" data-x="0" data-y="5"></div>
+      <div class="player-cell" data-x="0" data-y="6"></div>
+      <div class="player-cell" data-x="0" data-y="7"></div>
+      <div class="player-cell" data-x="0" data-y="8"></div>
+      <div class="player-cell" data-x="0" data-y="9"></div>
+      <div class="player-cell" data-x="1" data-y="0"></div>
+      <div class="player-cell" data-x="1" data-y="1"></div>
+      <div class="player-cell" data-x="1" data-y="2"></div>
+      <div class="player-cell" data-x="1" data-y="3"></div>
+      <div class="player-cell" data-x="1" data-y="4"></div>
+      <div class="player-cell" data-x="1" data-y="5"></div>
+      <div class="player-cell" data-x="1" data-y="6"></div>
+      <div class="player-cell" data-x="1" data-y="7"></div>
+      <div class="player-cell" data-x="1" data-y="8"></div>
+      <div class="player-cell" data-x="1" data-y="9"></div>
+      <div class="player-cell" data-x="2" data-y="0"></div>
+      <div class="player-cell" data-x="2" data-y="1"></div>
+      <div class="player-cell" data-x="2" data-y="2"></div>
+      <div class="player-cell" data-x="2" data-y="3"></div>
+      <div class="player-cell" data-x="2" data-y="4"></div>
+      <div class="player-cell" data-x="2" data-y="5"></div>
+      <div class="player-cell" data-x="2" data-y="6"></div>
+      <div class="player-cell" data-x="2" data-y="7"></div>
+      <div class="player-cell" data-x="2" data-y="8"></div>
+      <div class="player-cell" data-x="2" data-y="9"></div>
+      <div class="player-cell" data-x="3" data-y="0"></div>
+      <div class="player-cell" data-x="3" data-y="1"></div>
+      <div class="player-cell" data-x="3" data-y="2"></div>
+      <div class="player-cell" data-x="3" data-y="3"></div>
+      <div class="player-cell" data-x="3" data-y="4"></div>
+      <div class="player-cell" data-x="3" data-y="5"></div>
+      <div class="player-cell" data-x="3" data-y="6"></div>
+      <div class="player-cell" data-x="3" data-y="7"></div>
+      <div class="player-cell" data-x="3" data-y="8"></div>
+      <div class="player-cell" data-x="3" data-y="9"></div>
+      <div class="player-cell" data-x="4" data-y="0"></div>
+      <div class="player-cell" data-x="4" data-y="1"></div>
+      <div class="player-cell" data-x="4" data-y="2"></div>
+      <div class="player-cell" data-x="4" data-y="3"></div>
+      <div class="player-cell" data-x="4" data-y="4"></div>
+      <div class="player-cell" data-x="4" data-y="5"></div>
+      <div class="player-cell" data-x="4" data-y="6"></div>
+      <div class="player-cell" data-x="4" data-y="7"></div>
+      <div class="player-cell" data-x="4" data-y="8"></div>
+      <div class="player-cell" data-x="4" data-y="9"></div>
+      <div class="player-cell" data-x="5" data-y="0"></div>
+      <div class="player-cell" data-x="5" data-y="1"></div>
+      <div class="player-cell" data-x="5" data-y="2"></div>
+      <div class="player-cell" data-x="5" data-y="3"></div>
+      <div class="player-cell" data-x="5" data-y="4"></div>
+      <div class="player-cell" data-x="5" data-y="5"></div>
+      <div class="player-cell" data-x="5" data-y="6"></div>
+      <div class="player-cell" data-x="5" data-y="7"></div>
+      <div class="player-cell" data-x="5" data-y="8"></div>
+      <div class="player-cell" data-x="5" data-y="9"></div>
+      <div class="player-cell" data-x="6" data-y="0"></div>
+      <div class="player-cell" data-x="6" data-y="1"></div>
+      <div class="player-cell" data-x="6" data-y="2"></div>
+      <div class="player-cell" data-x="6" data-y="3"></div>
+      <div class="player-cell" data-x="6" data-y="4"></div>
+      <div class="player-cell" data-x="6" data-y="5"></div>
+      <div class="player-cell" data-x="6" data-y="6"></div>
+      <div class="player-cell" data-x="6" data-y="7"></div>
+      <div class="player-cell" data-x="6" data-y="8"></div>
+      <div class="player-cell" data-x="6" data-y="9"></div>
+      <div class="player-cell" data-x="7" data-y="0"></div>
+      <div class="player-cell" data-x="7" data-y="1"></div>
+      <div class="player-cell" data-x="7" data-y="2"></div>
+      <div class="player-cell" data-x="7" data-y="3"></div>
+      <div class="player-cell" data-x="7" data-y="4"></div>
+      <div class="player-cell" data-x="7" data-y="5"></div>
+      <div class="player-cell" data-x="7" data-y="6"></div>
+      <div class="player-cell" data-x="7" data-y="7"></div>
+      <div class="player-cell" data-x="7" data-y="8"></div>
+      <div class="player-cell" data-x="7" data-y="9"></div>
+      <div class="player-cell" data-x="8" data-y="0"></div>
+      <div class="player-cell" data-x="8" data-y="1"></div>
+      <div class="player-cell" data-x="8" data-y="2"></div>
+      <div class="player-cell" data-x="8" data-y="3"></div>
+      <div class="player-cell" data-x="8" data-y="4"></div>
+      <div class="player-cell" data-x="8" data-y="5"></div>
+      <div class="player-cell" data-x="8" data-y="6"></div>
+      <div class="player-cell" data-x="8" data-y="7"></div>
+      <div class="player-cell" data-x="8" data-y="8"></div>
+      <div class="player-cell" data-x="8" data-y="9"></div>
+      <div class="player-cell" data-x="9" data-y="0"></div>
+      <div class="player-cell" data-x="9" data-y="1"></div>
+      <div class="player-cell" data-x="9" data-y="2"></div>
+      <div class="player-cell" data-x="9" data-y="3"></div>
+      <div class="player-cell" data-x="9" data-y="4"></div>
+      <div class="player-cell" data-x="9" data-y="5"></div>
+      <div class="player-cell" data-x="9" data-y="6"></div>
+      <div class="player-cell" data-x="9" data-y="7"></div>
+      <div class="player-cell" data-x="9" data-y="8"></div>
+      <div class="player-cell" data-x="9" data-y="9"></div>
+    </div>
   </div>
   <div class="ai-side">
-    
+    <p class="ai-name">AI's Board</p>
+    <div class="ai-board">
+      <div class="ai-cell" data-x="0" data-y="0"></div>
+      <div class="ai-cell" data-x="0" data-y="1"></div>
+      <div class="ai-cell" data-x="0" data-y="2"></div>
+      <div class="ai-cell" data-x="0" data-y="3"></div>
+      <div class="ai-cell" data-x="0" data-y="4"></div>
+      <div class="ai-cell" data-x="0" data-y="5"></div>
+      <div class="ai-cell" data-x="0" data-y="6"></div>
+      <div class="ai-cell" data-x="0" data-y="7"></div>
+      <div class="ai-cell" data-x="0" data-y="8"></div>
+      <div class="ai-cell" data-x="0" data-y="9"></div>
+      <div class="ai-cell" data-x="1" data-y="0"></div>
+      <div class="ai-cell" data-x="1" data-y="1"></div>
+      <div class="ai-cell" data-x="1" data-y="2"></div>
+      <div class="ai-cell" data-x="1" data-y="3"></div>
+      <div class="ai-cell" data-x="1" data-y="4"></div>
+      <div class="ai-cell" data-x="1" data-y="5"></div>
+      <div class="ai-cell" data-x="1" data-y="6"></div>
+      <div class="ai-cell" data-x="1" data-y="7"></div>
+      <div class="ai-cell" data-x="1" data-y="8"></div>
+      <div class="ai-cell" data-x="1" data-y="9"></div>
+      <div class="ai-cell" data-x="2" data-y="0"></div>
+      <div class="ai-cell" data-x="2" data-y="1"></div>
+      <div class="ai-cell" data-x="2" data-y="2"></div>
+      <div class="ai-cell" data-x="2" data-y="3"></div>
+      <div class="ai-cell" data-x="2" data-y="4"></div>
+      <div class="ai-cell" data-x="2" data-y="5"></div>
+      <div class="ai-cell" data-x="2" data-y="6"></div>
+      <div class="ai-cell" data-x="2" data-y="7"></div>
+      <div class="ai-cell" data-x="2" data-y="8"></div>
+      <div class="ai-cell" data-x="2" data-y="9"></div>
+      <div class="ai-cell" data-x="3" data-y="0"></div>
+      <div class="ai-cell" data-x="3" data-y="1"></div>
+      <div class="ai-cell" data-x="3" data-y="2"></div>
+      <div class="ai-cell" data-x="3" data-y="3"></div>
+      <div class="ai-cell" data-x="3" data-y="4"></div>
+      <div class="ai-cell" data-x="3" data-y="5"></div>
+      <div class="ai-cell" data-x="3" data-y="6"></div>
+      <div class="ai-cell" data-x="3" data-y="7"></div>
+      <div class="ai-cell" data-x="3" data-y="8"></div>
+      <div class="ai-cell" data-x="3" data-y="9"></div>
+      <div class="ai-cell" data-x="4" data-y="0"></div>
+      <div class="ai-cell" data-x="4" data-y="1"></div>
+      <div class="ai-cell" data-x="4" data-y="2"></div>
+      <div class="ai-cell" data-x="4" data-y="3"></div>
+      <div class="ai-cell" data-x="4" data-y="4"></div>
+      <div class="ai-cell" data-x="4" data-y="5"></div>
+      <div class="ai-cell" data-x="4" data-y="6"></div>
+      <div class="ai-cell" data-x="4" data-y="7"></div>
+      <div class="ai-cell" data-x="4" data-y="8"></div>
+      <div class="ai-cell" data-x="4" data-y="9"></div>
+      <div class="ai-cell" data-x="5" data-y="0"></div>
+      <div class="ai-cell" data-x="5" data-y="1"></div>
+      <div class="ai-cell" data-x="5" data-y="2"></div>
+      <div class="ai-cell" data-x="5" data-y="3"></div>
+      <div class="ai-cell" data-x="5" data-y="4"></div>
+      <div class="ai-cell" data-x="5" data-y="5"></div>
+      <div class="ai-cell" data-x="5" data-y="6"></div>
+      <div class="ai-cell" data-x="5" data-y="7"></div>
+      <div class="ai-cell" data-x="5" data-y="8"></div>
+      <div class="ai-cell" data-x="5" data-y="9"></div>
+      <div class="ai-cell" data-x="6" data-y="0"></div>
+      <div class="ai-cell" data-x="6" data-y="1"></div>
+      <div class="ai-cell" data-x="6" data-y="2"></div>
+      <div class="ai-cell" data-x="6" data-y="3"></div>
+      <div class="ai-cell" data-x="6" data-y="4"></div>
+      <div class="ai-cell" data-x="6" data-y="5"></div>
+      <div class="ai-cell" data-x="6" data-y="6"></div>
+      <div class="ai-cell" data-x="6" data-y="7"></div>
+      <div class="ai-cell" data-x="6" data-y="8"></div>
+      <div class="ai-cell" data-x="6" data-y="9"></div>
+      <div class="ai-cell" data-x="7" data-y="0"></div>
+      <div class="ai-cell" data-x="7" data-y="1"></div>
+      <div class="ai-cell" data-x="7" data-y="2"></div>
+      <div class="ai-cell" data-x="7" data-y="3"></div>
+      <div class="ai-cell" data-x="7" data-y="4"></div>
+      <div class="ai-cell" data-x="7" data-y="5"></div>
+      <div class="ai-cell" data-x="7" data-y="6"></div>
+      <div class="ai-cell" data-x="7" data-y="7"></div>
+      <div class="ai-cell" data-x="7" data-y="8"></div>
+      <div class="ai-cell" data-x="7" data-y="9"></div>
+      <div class="ai-cell" data-x="8" data-y="0"></div>
+      <div class="ai-cell" data-x="8" data-y="1"></div>
+      <div class="ai-cell" data-x="8" data-y="2"></div>
+      <div class="ai-cell" data-x="8" data-y="3"></div>
+      <div class="ai-cell" data-x="8" data-y="4"></div>
+      <div class="ai-cell" data-x="8" data-y="5"></div>
+      <div class="ai-cell" data-x="8" data-y="6"></div>
+      <div class="ai-cell" data-x="8" data-y="7"></div>
+      <div class="ai-cell" data-x="8" data-y="8"></div>
+      <div class="ai-cell" data-x="8" data-y="9"></div>
+      <div class="ai-cell" data-x="9" data-y="0"></div>
+      <div class="ai-cell" data-x="9" data-y="1"></div>
+      <div class="ai-cell" data-x="9" data-y="2"></div>
+      <div class="ai-cell" data-x="9" data-y="3"></div>
+      <div class="ai-cell" data-x="9" data-y="4"></div>
+      <div class="ai-cell" data-x="9" data-y="5"></div>
+      <div class="ai-cell" data-x="9" data-y="6"></div>
+      <div class="ai-cell" data-x="9" data-y="7"></div>
+      <div class="ai-cell" data-x="9" data-y="8"></div>
+      <div class="ai-cell" data-x="9" data-y="9"></div>
+    </div>
   </div>
-  <div class="footer"></div>
+  <div class="ships-for-add">
+    <p class="for-add-title">
+      ⬅ Please add your ships to your board
+    </p>
+    <div class="ships-container">
+      <div class="carrier-container" id="carrier" draggable="true">
+        <div class="carrier"></div>
+        <div class="carrier"></div>
+        <div class="carrier"></div>
+        <div class="carrier"></div>
+        <div class="carrier"></div>
+      </div>
+      <div class="battleship-container" id="battleship">
+        <div class="battleship"></div>
+        <div class="battleship"></div>
+        <div class="battleship"></div>
+        <div class="battleship"></div>
+      </div>
+      <div class="destroyer-container" id="destroyer">
+        <div class="destroyer"></div>
+        <div class="destroyer"></div>
+        <div class="destroyer"></div>
+      </div>
+      <div class="submarine-container" id="submarine">
+        <div class="submarine"></div>
+        <div class="submarine"></div>
+        <div class="submarine"></div>
+      </div>
+      <div class="patrol-boat-container" id="patrol-boat">
+        <div class="patrol-boat"></div>
+        <div class="patrol-boat"></div>
+      </div>
+    </div>
+  </div>
+  <div class="button-space">
+    <button class="start-game-btn">
+      Start Game
+    </button>
+  </div>
+  <div class="footer">
+    Created by Karl Garcia (github.com/kbgarcia8)
+  </div>
+  <script src="./index.js"></script>
   </body>
 </html>
