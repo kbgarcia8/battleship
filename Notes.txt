@@ -10,6 +10,8 @@ Flow of web page/game before start
 Term dumps:
 1. insertAdjacentElement()
 2. drag and drop API
+3. drag event listeners
+https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData 
 
 Repository Reference/s:
 1. https://github.com/EmptyBox12/battleship/blob/main/src/index.js
@@ -17,5 +19,11 @@ Repository Reference/s:
 
 Open Items:
 1. Connect gameboard DOM with gameboard object's gameboardArray
+  - Function to create DOMAddShips
+    -- 
+  - Function that will update information once ship is placed
+    -- use getAttributte to get custom attributes data
 2. Create DOM.js
   - Creation of gameboard is simultaneous between dom and object
+  - All other functions is proposed to be this way:
+    -- Executed through DOM.js then simultaneously executing a factory function
