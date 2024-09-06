@@ -79,7 +79,6 @@ body {
     border: 5px yellow solid;
 }
 .carrier-container{
-    display: flex;
     border: 2.5px solid rgb(109, 0, 0);
     width: fit-content;
     margin: 5%;
@@ -91,7 +90,6 @@ body {
     background-color: rgb(243, 95, 95);
 }
 .battleship-container{
-    display: flex;
     border: 2.5px solid rgb(0, 59, 0);
     width: fit-content;
     margin: 5%;
@@ -103,7 +101,6 @@ body {
     background-color: rgb(80, 177, 80);
 }
 .destroyer-container{
-    display: flex;
     border: 2.5px solid rgb(0, 9, 59);
     width: fit-content;
     margin: 5%;
@@ -115,7 +112,6 @@ body {
     background-color: rgb(80, 103, 177);
 }
 .submarine-container{
-    display: flex;
     border: 2.5px solid rgb(59, 58, 0);
     width: fit-content;
     margin: 5%;
@@ -127,7 +123,6 @@ body {
     background-color: rgb(162, 177, 80);
 }
 .patrol-boat-container{
-    display: flex;
     border: 2.5px solid rgb(35, 0, 59);
     width: fit-content;
     margin: 5%;
@@ -137,6 +132,12 @@ body {
     height: 7vh;
     border: 2.5px solid rgb(74, 0, 109);
     background-color: rgb(141, 80, 177);
+}
+.horizontal{
+    display: flex;
+}
+.vertical{
+    display: block;
 }
 .ai-side{
     height: 100%;
