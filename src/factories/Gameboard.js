@@ -28,7 +28,7 @@ export class Gameboard {
     shipsArr.push(new Ships("battleship", 4))
     shipsArr.push(new Ships("destroyer", 3))
     shipsArr.push(new Ships("submarine", 3))
-    shipsArr.push(new Ships("patrol boat", 2))
+    shipsArr.push(new Ships("patrol-boat", 2))
     return shipsArr
   }
   
@@ -133,7 +133,7 @@ manual test
   gameboard.placeShip("battleship", [1, 0], 'horizontal')
   gameboard.placeShip("destroyer", [4, 5], 'vertical')
   gameboard.placeShip("submarine", [7, 9], 'vertical')
-  gameboard.placeShip("patrol boat", [5, 7], 'horizontal')
+  gameboard.placeShip("patrol-boat", [5, 7], 'horizontal')
   gameboard.receiveAttack([2, 0]) //missed
   gameboard.receiveAttack([3, 1]) //missed
   gameboard.receiveAttack([2, 0]) //missed
@@ -153,6 +153,6 @@ manual test
   gameboard.receiveAttack([7, 9]) //hit submarine
   gameboard.receiveAttack([8, 9]) //hit submarine
   gameboard.receiveAttack([9, 9]) //hit submarine
-  gameboard.receiveAttack([5, 7]) //hit patrol boat
-  gameboard.receiveAttack([5, 8]) //hit patrol boat
+  gameboard.receiveAttack([5, 7]) //hit patrol-boat
+  gameboard.receiveAttack([5, 8]) //hit patrol-boat
 */
