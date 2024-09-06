@@ -12,6 +12,8 @@ Term dumps:
 2. drag and drop API
 3. drag event listeners
 https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData 
+3. drag event listeners
+https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData 
 
 Repository Reference/s:
 1. https://github.com/EmptyBox12/battleship/blob/main/src/index.js
@@ -25,5 +27,7 @@ Open Items:
     -- use getAttributte to get custom attributes data
 2. Create DOM.js
   - Creation of gameboard is simultaneous between dom and object
+  - All other functions is proposed to be this way:
+    -- Executed through DOM.js then simultaneously executing a factory function
   - All other functions is proposed to be this way:
     -- Executed through DOM.js then simultaneously executing a factory function
