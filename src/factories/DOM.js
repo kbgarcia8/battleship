@@ -4,6 +4,7 @@ import {Player} from "../factories/Player.js";
 
 const player1 = new Player("player")
 const playerSpace = document.querySelector(".player-board")
+const playerAddShipSpace = document.querySelector(".ships-container")
 //console.log(player1.gameboard.gameboardArray)
 
 class DOM {
@@ -23,15 +24,29 @@ class DOM {
             }
         }
     }
-    DOMAddShips(){
-        
+    DOMAddShips(player, parent){
+        for(let i=0; i<player.gameboard.shipsArray.length;i++){
+            let currShipName = player.gameboard.shipsArray[i].name
+            const ship_container_node = document.createElement('DIV');
+            ship_container_node.setAttribute('class', `${currShipName}-container horizontal`);
+            ship_container_node.setAttribute('id', `${currShipName}`);
+            ship_container_node.setAttribute('draggable', 'true');
+            parent.appendChild(ship_container_node)
+            for(let j=0; j<player.gameboard.shipsArray[i].length;j++){
+                const ship_part_node = document.createElement('DIV');
+                ship_part_node.setAttribute('class', `${currShipName}`);
+                //ship_part_node.setAttribute('id', `${currShipName}`);
+                ship_container_node.appendChild(ship_part_node)
+            }
+        }
     }
 }
 
 const createDOM = new DOM()
 createDOM.DOMGameboard(player1,playerSpace)
-
+createDOM.DOMAddShips(player1,playerAddShipSpace)
 const tests = document.querySelectorAll(".player-cell")
 tests.forEach(test => {
-    console.log(test.getAttribute("data-in"))
+    //console.log(typeof(Number(test.getAttribute('data-x'))))
+    //if((test.getAttribute("data-x") == 0) && (test.getAttribute("data-y") == 0)) console.log(test)
 })
