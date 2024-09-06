@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://battleship/./src/index.js?");
+eval("const carrier = document.querySelector(\"#carrier\");\r\n\r\nfunction dragStarter(element) {\r\n  element.addEventListener(\"dragstart\", (e) => {\r\n    //set the target id as data for transfer\r\n    e.dataTransfer.setData(\"text/plain\", e.target.id);\r\n  });\r\n}\r\n\r\nconst cells = document.querySelectorAll(\".player-cell\");\r\n\r\ncells.forEach((cell) => {\r\n  cell.addEventListener(\"dragover\", (e) => {\r\n    e.preventDefault();\r\n  });\r\n  cell.addEventListener(\"drop\", (e) => {\r\n    e.preventDefault();\r\n    console.log(\"dropped\")\r\n    var data = e.dataTransfer.getData(\"text\")\r\n    //e.target.appendSibling(document.getElementById(data));\r\n    //e.target.insertAdjacentElement(\"afterend\", document.getElementById(data))\r\n    //console.log(e.target.dataset.y)\r\n  });\r\n});\r\ndragStarter(carrier);\r\n\n\n//# sourceURL=webpack://battleship/./src/index.js?");
 
 /***/ })
 
