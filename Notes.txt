@@ -21,8 +21,6 @@ Repository Reference/s:
 
 Open Items:
 1. Connect gameboard DOM with gameboard object's gameboardArray
-  - Function to create DOMAddShips
-    -- 
   - Function that will update information once ship is placed
     -- use getAttributte to get custom attributes data
 2. Create DOM.js
