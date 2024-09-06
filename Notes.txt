@@ -29,5 +29,3 @@ Open Items:
   - Creation of gameboard is simultaneous between dom and object
   - All other functions is proposed to be this way:
     -- Executed through DOM.js then simultaneously executing a factory function
-  - All other functions is proposed to be this way:
-    -- Executed through DOM.js then simultaneously executing a factory function
