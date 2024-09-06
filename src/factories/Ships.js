@@ -1,4 +1,4 @@
-class Ships {
+export class Ships {
   constructor(name, length) {
     this.name = name,
       this.length = length,
@@ -31,5 +31,3 @@ class Ships {
     return initialPosArr
   }
 }
-
-module.exports = Ships;

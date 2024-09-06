@@ -1,6 +1,6 @@
-const Ships = require("../factories/Ships.js");
+import {Ships} from "../factories/Ships.js";
 
-class Gameboard {
+export class Gameboard {
   constructor() {
     this.gameboardArray = this.createGameboard()
     this.shipsArray = this.initializeShipsArray()
@@ -126,9 +126,6 @@ class Gameboard {
     return true
   }
 }
-
-
-module.exports = Gameboard;
 /*
 manual test
   gameboard = new Gameboard()

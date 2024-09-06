@@ -1,7 +1,6 @@
-const Ships = require("../factories/Ships.js");
-const Gameboard = require("../factories/Gameboard.js");
+import {Gameboard} from "../factories/Gameboard.js";
 
-class Player {
+export class Player {
   constructor(name) {
     this.name = name;
     this.gameboard = new Gameboard();
@@ -34,8 +33,6 @@ class Player {
   }
 }
 
-
-module.exports = Player;
 /*
 manual test
   player1 = new Player("Admiral")
