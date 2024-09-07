@@ -88,14 +88,18 @@ cells.forEach((cell) => {
     let y = Number(cell.dataset.y);
     console.log([x, y]);
     console.log(cell.dataset, acquiredID, acquiredLength, acquiredOrientation);
-    cell.classList.add(acquiredID);
-    //insert validation if position is valid using placeShip method
-
-    let i = 0;
-    while (i < acquiredLength - 1) {
-      cell = cell.nextSibling;
-      cell.classList.add(acquiredID);
-      i++;
+    if(player1.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)) {
+        console.log("possible")
+        cell.classList.add(acquiredID);
+        let i = 0;
+        while (i < acquiredLength - 1) {
+          cell = cell.nextSibling;
+          cell.classList.add(acquiredID);
+          i++;
+        }
+        //add here to remove ship once placed
+    } else {
+        console.log("Invalid placement")
     }
   });
 });
