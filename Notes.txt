@@ -21,8 +21,13 @@ Repository Reference/s:
 
 Open Items:
 1. Connect gameboard DOM with gameboard object's gameboardArray
-  - Function that will update information once ship is placed
+  - Function that will update information once ship is placed individually
     -- use getAttributte to get custom attributes data
+  - Function that will update board each turn
+    -- hit
+    -- miss
+    -- sunk
+    -- gameover
 2. Create DOM.js
   - Creation of gameboard is simultaneous between dom and object
   - All other functions is proposed to be this way:
