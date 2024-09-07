@@ -78,59 +78,42 @@ body {
     padding: 5%;
     border: 5px yellow solid;
 }
-.carrier-container{
-    border: 2.5px solid rgb(109, 0, 0);
+.carrier-container,
+.battleship-container
+.destroyer-container,
+.submarine-container,
+.patrol-boat-container{
     width: fit-content;
     margin: 5%;
 }
 .carrier{
     width: 3.5vw;
     height: 7vh;
-    border: 2.5px solid rgb(109, 0, 0);
+    border: 5px solid rgb(109, 0, 0); 
     background-color: rgb(243, 95, 95);
-}
-.battleship-container{
-    border: 2.5px solid rgb(0, 59, 0);
-    width: fit-content;
-    margin: 5%;
 }
 .battleship{
     width: 3.5vw;
     height: 7vh;
-    border: 2.5px solid rgb(4, 109, 0);
+    border: 5px solid  rgb(4, 109, 0);
     background-color: rgb(80, 177, 80);
-}
-.destroyer-container{
-    border: 2.5px solid rgb(0, 9, 59);
-    width: fit-content;
-    margin: 5%;
 }
 .destroyer{
     width: 3.5vw;
     height: 7vh;
-    border: 2.5px solid rgb(0, 2, 109);
+    border: 5px solid  rgb(0, 2, 109);
     background-color: rgb(80, 103, 177);
-}
-.submarine-container{
-    border: 2.5px solid rgb(59, 58, 0);
-    width: fit-content;
-    margin: 5%;
 }
 .submarine{
     width: 3.5vw;
     height: 7vh;
-    border: 2.5px solid rgb(98, 109, 0);
+    border: 5px solid  rgb(98, 109, 0);
     background-color: rgb(162, 177, 80);
-}
-.patrol-boat-container{
-    border: 2.5px solid rgb(35, 0, 59);
-    width: fit-content;
-    margin: 5%;
 }
 .patrol-boat{
     width: 3.5vw;
     height: 7vh;
-    border: 2.5px solid rgb(74, 0, 109);
+    border: 5px solid  rgb(74, 0, 109);
     background-color: rgb(141, 80, 177);
 }
 .horizontal{
