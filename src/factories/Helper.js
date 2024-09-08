@@ -8,4 +8,13 @@ export class Helper {
         }
         return shipOrientation;
       }
+    dragShip(element) {
+        let currOrientation = this.checkOrientation(element)
+        const children = element.childNodes;
+        element.addEventListener("dragstart", (e) => {
+            e.dataTransfer.setData("textID", e.target.id)
+            e.dataTransfer.setData("textLength", children.length)
+            e.dataTransfer.setData("textOrientation", currOrientation)
+    })
+}
 }
