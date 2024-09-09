@@ -65,6 +65,7 @@ class Ships {
     }
     
     placeShip(name, coords, orientation) {
+      console.log(this.isPlacementValid(name, coords, orientation))
       if (this.isPlacementValid(name, coords, orientation) === true) {
         const re = new RegExp(name, "g");
         let currShipName = "";
@@ -109,6 +110,7 @@ class Ships {
         }
       }
       const [x, y] = coords;
+      
       if (x > 10 || x < 0 || y > 10 || y < 0) return false
       if (orientation == 'horizontal' && y + (currShipLength-1) < 10) {
         for (let j = 0; j < currShipLength; j++) {
@@ -116,6 +118,7 @@ class Ships {
           return true
         }
       } else if (orientation == 'vertical' && x + (currShipLength-1) < 10) {
+        
         for (let k = 0; k < currShipLength; k++) {
           if (this.gameboardArray[x + k][y] !== null) return false
           return true
@@ -239,8 +242,9 @@ class Ships {
           let x = Number(cell.dataset.x)
           let y = Number(cell.dataset.y)
           //console.log([x, y])
-          console.log(cell.dataset, acquiredID, acquiredLength, acquiredOrientation)
-          if((this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)) && acquiredOrientation == "horizontal") {
+          //console.log(cell.dataset, acquiredID, acquiredLength, acquiredOrientation)
+          
+          if(this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation) && acquiredOrientation == "horizontal") {
               console.log("Placement is possible")
               cell.setAttribute("data-in", acquiredID)
               cell.classList.add(acquiredID)
@@ -252,8 +256,8 @@ class Ships {
                 i++;
               }
               let element = document.querySelector(`.${acquiredID}-container`)
-              element.remove()       
-          } else if ((this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)) && acquiredOrientation == "vertical") {
+              element.remove()
+          } else if (this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation) && acquiredOrientation == "vertical") {//resolve else if why placeShip is being executed twice
             console.log("Placement is possible")
             cell.setAttribute("data-in", acquiredID)
             cell.classList.add(acquiredID)
@@ -265,7 +269,7 @@ class Ships {
               i++;
             }
             let element = document.querySelector(`.${acquiredID}-container`)
-            element.remove()       
+            element.remove()
           } else {
               alert("Invalid placement")
           }
