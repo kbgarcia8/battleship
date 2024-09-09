@@ -1,3 +1,6 @@
+  <script type="module" src="./index.js"></script>
+  <script src="./index_noES6.js"></script>
+
 Flow of web page/game before start
   a. Player 1 Gameboard at Left
   b. Pre-positioned ships
