@@ -21,9 +21,10 @@ Repository Reference/s:
 
 Open Items:
 1. Connect gameboard DOM with gameboard object's gameboardArray
-  - Function to rotate ships to be added
-    -- rotate at double click
-    -- remove or add class horizontal/vertical whichever is appropriate
+  - For fix:
+    -- Overlapping ships
+  - Helper method for AI
+    -- Place ship of AI randomly
   - Function that will update board each turn
     -- hit
     -- miss
