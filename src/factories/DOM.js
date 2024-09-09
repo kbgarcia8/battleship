@@ -20,10 +20,7 @@ export class DOM {
     for (let i = 0; i < this.player.gameboard.shipsArray.length; i++) {
       let currShipName = this.player.gameboard.shipsArray[i].name;
       const ship_container_node = document.createElement("DIV")
-      ship_container_node.setAttribute(
-        "class",
-        `${currShipName}-container horizontal`
-      )
+      ship_container_node.setAttribute("class",`${currShipName}-container horizontal`)
       ship_container_node.setAttribute("id", `${currShipName}`)
       ship_container_node.setAttribute("draggable", "true")
       parent.appendChild(ship_container_node)
@@ -34,20 +31,22 @@ export class DOM {
       }
     }
   }
-  DOMDropShips(cells,container) {
+  DOMDropShips(cells) {
     cells.forEach((cell) => {
       cell.addEventListener("dragover", (e) => {
         e.preventDefault()
       })
       cell.addEventListener("drop", (e) => {
-        e.preventDefault()
-        //console.log("dropped")
+        e.preventDefault()        
         let acquiredID = e.dataTransfer.getData("textID")
         let acquiredLength = e.dataTransfer.getData("textLength")
-        let acquiredOrientation = e.dataTransfer.getData("textOrientation")
+        let currentElement = document.querySelector(`#${acquiredID}`)
+        let acquiredOrientation = this.helper.checkOrientation(currentElement)
         let x = Number(cell.dataset.x)
         let y = Number(cell.dataset.y)
-        if(this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)) {
+        //console.log([x, y])
+        console.log(cell.dataset, acquiredID, acquiredLength, acquiredOrientation)
+        if((this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)) && acquiredOrientation == "horizontal") {
             console.log("Placement is possible")
             cell.setAttribute("data-in", acquiredID)
             cell.classList.add(acquiredID)
