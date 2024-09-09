@@ -30,8 +30,13 @@ helper.dragShip(battleship)
 helper.dragShip(destroyer)
 helper.dragShip(submarine)
 helper.dragShip(patrol_boat)
+helper.changeOrientation(carrier)
+helper.changeOrientation(battleship)
+helper.changeOrientation(destroyer)
+helper.changeOrientation(submarine)
+helper.changeOrientation(patrol_boat)
 
-createDOM.DOMDropShips(cells,playerAddShipContainer)
+createDOM.DOMDropShips(cells)
 
 const startGameBtn = document.querySelector(".start-game-btn")
 
