@@ -77,17 +77,24 @@ export class Gameboard {
       }
     }
     const [x, y] = coords;
+    
     if (x > 10 || x < 0 || y > 10 || y < 0) return false
     if (orientation == 'horizontal' && y + (currShipLength-1) < 10) {
+      let pathContent = []
       for (let j = 0; j < currShipLength; j++) {
-        if (this.gameboardArray[x][y + j] !== null) return false
-        return true
+        pathContent.push(this.gameboardArray[x][y + j])          
       }
+      const filtered = pathContent.filter((content) => {return content == null})
+      if (filtered.length == pathContent.length) return true
+      return false
     } else if (orientation == 'vertical' && x + (currShipLength-1) < 10) {
+      let pathContent = []
       for (let k = 0; k < currShipLength; k++) {
-        if (this.gameboardArray[x + k][y] !== null) return false
-        return true
+        pathContent.push(this.gameboardArray[x + k][y])
       }
+      const filtered = pathContent.filter((content) => {return content == null})
+      if (filtered.length == pathContent.length) return true
+      return false
     } else {
       return false
     }
