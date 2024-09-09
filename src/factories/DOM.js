@@ -59,6 +59,19 @@ export class DOM {
             }
             let element = document.querySelector(`.${acquiredID}-container`)
             element.remove()       
+        } else if ((this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)) && acquiredOrientation == "vertical") {
+          console.log("Placement is possible")
+          cell.setAttribute("data-in", acquiredID)
+          cell.classList.add(acquiredID)
+          let i = 0;
+          while (i < acquiredLength - 1) {
+            cell = cell.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling; //try the next 10 sibling
+            cell.setAttribute("data-in", acquiredID)
+            cell.classList.add(acquiredID)
+            i++;
+          }
+          let element = document.querySelector(`.${acquiredID}-container`)
+          element.remove()       
         } else {
             alert("Invalid placement")
         }
@@ -66,7 +79,3 @@ export class DOM {
     })
   }
 }
-
-
-
-

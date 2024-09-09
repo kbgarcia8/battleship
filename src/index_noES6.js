@@ -214,10 +214,7 @@ class Ships {
       for (let i = 0; i < this.player.gameboard.shipsArray.length; i++) {
         let currShipName = this.player.gameboard.shipsArray[i].name;
         const ship_container_node = document.createElement("DIV")
-        ship_container_node.setAttribute(
-          "class",
-          `${currShipName}-container horizontal`
-        )
+        ship_container_node.setAttribute("class",`${currShipName}-container horizontal`)
         ship_container_node.setAttribute("id", `${currShipName}`)
         ship_container_node.setAttribute("draggable", "true")
         parent.appendChild(ship_container_node)
@@ -228,22 +225,22 @@ class Ships {
         }
       }
     }
-    DOMDropShips(cells,container) {
+    DOMDropShips(cells) {
       cells.forEach((cell) => {
         cell.addEventListener("dragover", (e) => {
           e.preventDefault()
         })
         cell.addEventListener("drop", (e) => {
-          e.preventDefault()
-          //console.log("dropped")
+          e.preventDefault()        
           let acquiredID = e.dataTransfer.getData("textID")
           let acquiredLength = e.dataTransfer.getData("textLength")
-          let acquiredOrientation = e.dataTransfer.getData("textOrientation")
+          let currentElement = document.querySelector(`#${acquiredID}`)
+          let acquiredOrientation = this.helper.checkOrientation(currentElement)
           let x = Number(cell.dataset.x)
           let y = Number(cell.dataset.y)
           //console.log([x, y])
-          //console.log(cell.dataset, acquiredID, acquiredLength, acquiredOrientation)
-          if(this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)) {
+          console.log(cell.dataset, acquiredID, acquiredLength, acquiredOrientation)
+          if((this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)) && acquiredOrientation == "horizontal") {
               console.log("Placement is possible")
               cell.setAttribute("data-in", acquiredID)
               cell.classList.add(acquiredID)
@@ -256,6 +253,19 @@ class Ships {
               }
               let element = document.querySelector(`.${acquiredID}-container`)
               element.remove()       
+          } else if ((this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)) && acquiredOrientation == "vertical") {
+            console.log("Placement is possible")
+            cell.setAttribute("data-in", acquiredID)
+            cell.classList.add(acquiredID)
+            let i = 0;
+            while (i < acquiredLength - 1) {
+              cell = cell.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling; //try the next 10 sibling
+              cell.setAttribute("data-in", acquiredID)
+              cell.classList.add(acquiredID)
+              i++;
+            }
+            let element = document.querySelector(`.${acquiredID}-container`)
+            element.remove()       
           } else {
               alert("Invalid placement")
           }
@@ -275,12 +285,10 @@ class Ships {
         return shipOrientation;
       }
     dragShip(element) {
-        let currOrientation = this.checkOrientation(element)
         const children = element.childNodes;
         element.addEventListener("dragstart", (e) => {
             e.dataTransfer.setData("textID", e.target.id)
             e.dataTransfer.setData("textLength", children.length)
-            e.dataTransfer.setData("textOrientation", currOrientation)
       })
     }
     IsAllShipsPlaced(container) {
@@ -297,6 +305,18 @@ class Ships {
           containerParent.setAttribute("style", 'display: none;')
           AIContainer.setAttribute("style", 'display: flex;')
         }        
+      })
+    }
+    changeOrientation(element) {
+      element.addEventListener("dblclick", (e) => {
+        e.preventDefault()
+        if(element.classList.contains("horizontal")) {
+          element.classList.remove("horizontal")
+          element.classList.add("vertical")
+        } else if (element.classList.contains("vertical")) {
+          element.classList.remove("vertical")
+          element.classList.add("horizontal")
+        }
       })
     }
   }
@@ -320,7 +340,7 @@ class Ships {
   const battleship = document.querySelector("#battleship")
   const destroyer = document.querySelector("#destroyer")
   const submarine = document.querySelector("#submarine")
-  const patrol_boat = document.querySelector("#patrol-boat") 
+  const patrol_boat = document.querySelector("#patrol-boat")
   
   
   helper.dragShip(carrier)
@@ -328,8 +348,13 @@ class Ships {
   helper.dragShip(destroyer)
   helper.dragShip(submarine)
   helper.dragShip(patrol_boat)
+  helper.changeOrientation(carrier)
+  helper.changeOrientation(battleship)
+  helper.changeOrientation(destroyer)
+  helper.changeOrientation(submarine)
+  helper.changeOrientation(patrol_boat)
   
-  createDOM.DOMDropShips(cells,playerAddShipContainer)
+  createDOM.DOMDropShips(cells)
   
   const startGameBtn = document.querySelector(".start-game-btn")
   
