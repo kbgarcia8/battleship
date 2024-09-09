@@ -64,8 +64,9 @@ body {
     display: flex;
     align-content: center;
     justify-content: center;
+    text-align: center;
     color: #ffff;
-    font-size: 4vh;
+    font-size: 3.5vh;
     font-weight: 900;
 }
 .ships-container{
@@ -79,7 +80,7 @@ body {
     border: 5px yellow solid;
 }
 .carrier-container,
-.battleship-container
+.battleship-container,
 .destroyer-container,
 .submarine-container,
 .patrol-boat-container{
