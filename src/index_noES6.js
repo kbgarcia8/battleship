@@ -117,8 +117,6 @@ class Ships {
           pathContent.push(this.gameboardArray[x][y + j])          
         }
         const filtered = pathContent.filter((content) => {return content == null})
-        console.log(pathContent)
-        console.log(filtered)
         if (filtered.length == pathContent.length) return true
         return false
       } else if (orientation == 'vertical' && x + (currShipLength-1) < 10) {
@@ -127,8 +125,6 @@ class Ships {
           pathContent.push(this.gameboardArray[x + k][y])
         }
         const filtered = pathContent.filter((content) => {return content == null})
-        console.log(pathContent)
-        console.log(filtered)
         if (filtered.length == pathContent.length) return true
         return false
       } else {
@@ -251,7 +247,6 @@ class Ships {
           let y = Number(cell.dataset.y)
           //console.log([x, y])
           //console.log(cell.dataset, acquiredID, acquiredLength, acquiredOrientation)
-          console.log(this.player.gameboard.gameboardArray)
           const checkPlacement = this.player.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)
           if(checkPlacement && acquiredOrientation == "horizontal") {
               console.log("Horizontal placement is possible")

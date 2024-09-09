@@ -83,8 +83,6 @@ export class Gameboard {
         pathContent.push(this.gameboardArray[x][y + j])          
       }
       const filtered = pathContent.filter((content) => {return content == null})
-      console.log(pathContent)
-      console.log(filtered)
       if (filtered.length == pathContent.length) return true
       return false
     } else if (orientation == 'vertical' && x + (currShipLength-1) < 10) {
@@ -93,8 +91,6 @@ export class Gameboard {
         pathContent.push(this.gameboardArray[x + k][y])
       }
       const filtered = pathContent.filter((content) => {return content == null})
-      console.log(pathContent)
-      console.log(filtered)
       if (filtered.length == pathContent.length) return true
       return false
     } else {
