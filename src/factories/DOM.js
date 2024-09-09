@@ -1,107 +1,137 @@
-import { Ships } from "../factories/Ships.js"
-import { Gameboard } from "../factories/Gameboard.js"
-import { Player } from "../factories/Player.js"
-import { Helper } from "../factories/Helper.js"
-
-const player1 = new Player("player")
-const helper = new Helper()
-const playerSpace = document.querySelector(".player-board")
-const playerAddShipSpace = document.querySelector(".ships-container")
-//console.log(player1.gameboard.gameboardArray)
-
-class DOM {
-  constructor() {}
-
-  DOMGameboard(player, parent) {
-    for (let x = 0; x < player.gameboard.gameboardArray.length; x++) {
-      for (let y = 0; y < player.gameboard.gameboardArray[x].length; y++) {
-        var board_node = document.createElement("DIV")
-        board_node.setAttribute("class", `${player.name}-cell`)
-        board_node.setAttribute("data-x", `${x}`)
-        board_node.setAttribute("data-y", `${y}`)
-        board_node.setAttribute(
-          "data-in",
-          `${player.gameboard.gameboardArray[x][y]}`
-        )
-        parent.appendChild(board_node)
-      }
-    }
+export class Gameboard {
+  constructor() {
+    this.gameboardArray = this.createGameboard()
+    this.shipsArray = this.initializeShipsArray()
+    this.missedAttacks = []
   }
-  DOMAddShips(player, parent) {
-    for (let i = 0; i < player.gameboard.shipsArray.length; i++) {
-      let currShipName = player.gameboard.shipsArray[i].name;
-      const ship_container_node = document.createElement("DIV")
-      ship_container_node.setAttribute(
-        "class",
-        `${currShipName}-container horizontal`
-      )
-      ship_container_node.setAttribute("id", `${currShipName}`)
-      ship_container_node.setAttribute("draggable", "true")
-      parent.appendChild(ship_container_node)
-      for (let j = 0; j < player.gameboard.shipsArray[i].length; j++) {
-        const ship_part_node = document.createElement("DIV")
-        ship_part_node.setAttribute("class", `${currShipName}`)
-        //ship_part_node.setAttribute('id', `${currShipName}`)
-        ship_container_node.appendChild(ship_part_node)
-      }
-    }
+  createGameboard() {
+    let gameArray = [
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null, null, null],
+    ]
+    return gameArray
   }
-  DOMDropShips(cells) {
-    cells.forEach((cell) => {
-      cell.addEventListener("dragover", (e) => {
-        e.preventDefault()
-      })
-      cell.addEventListener("drop", (e) => {
-        e.preventDefault()
-        console.log("dropped")
-        let acquiredID = e.dataTransfer.getData("textID")
-        let acquiredLength = e.dataTransfer.getData("textLength")
-        let acquiredOrientation = e.dataTransfer.getData("textOrientation")
-        let x = Number(cell.dataset.x)
-        let y = Number(cell.dataset.y)
-        console.log([x, y])
-        console.log(cell.dataset, acquiredID, acquiredLength, acquiredOrientation)
-        if(player1.gameboard.placeShip(acquiredID, [x,y], acquiredOrientation)) {
-            console.log("possible")
-            cell.setAttribute("data-in", acquiredID)
-            cell.classList.add(acquiredID)
-            let i = 0;
-            while (i < acquiredLength - 1) {
-              cell = cell.nextSibling;
-              cell.setAttribute("data-in", acquiredID)
-              cell.classList.add(acquiredID)
-              i++;
+  
+  initializeShipsArray() {
+    const shipsArr = []
+    shipsArr.push(new Ships("carrier", 5))
+    shipsArr.push(new Ships("battleship", 4))
+    shipsArr.push(new Ships("destroyer", 3))
+    shipsArr.push(new Ships("submarine", 3))
+    shipsArr.push(new Ships("patrol-boat", 2))
+    return shipsArr
+  }
+  
+  placeShip(name, coords, orientation) {
+    if (this.isPlacementValid(name, coords, orientation) === true) {
+      const re = new RegExp(name, "g");
+      let currShipName = "";
+      let currShipLength = 0;
+      for (let i = 0; i < this.shipsArray.length; i++) {
+        if (this.shipsArray[i].name.match(re)) {
+          currShipName = this.shipsArray[i].name
+          currShipLength = this.shipsArray[i].length
+          this.shipsArray[i].orientation = orientation
+          const [x, y] = coords;
+          if (orientation == 'horizontal') {
+            for (let j = 0; j < currShipLength; j++) {
+              this.gameboardArray[x][y + j] = currShipName
+              this.shipsArray[i].position[j][0] = x
+              this.shipsArray[i].position[j][1] = y + j
             }
-            let element = document.querySelector(`.${acquiredID}-container`)
-            element.remove()
-        } else {
-            alert("Invalid placement")
+          } else if (orientation == 'vertical') {
+            for (let k = 0; k < currShipLength; k++) {
+              this.gameboardArray[x + k][y] = currShipName
+              this.shipsArray[i].position[k][0] = x + k
+              this.shipsArray[i].position[k][1] = y
+            }
+          }
+          return {
+            "gameboardArray": this.gameboardArray,
+            "shipsArray": this.shipsArray,
+            "missedAttacks": this.missedAttacks
+          }
         }
-      })
-    })
+      }
+    } else {
+      return false
+    }
+  }
+  
+  isPlacementValid(name, coords, orientation) {
+    const re = new RegExp(name, "g");
+    let currShipLength = 0;
+    for (let i = 0; i < this.shipsArray.length; i++) {
+      if (this.shipsArray[i].name.match(re)) {
+        currShipLength = this.shipsArray[i].length
+      }
+    }
+    const [x, y] = coords;
+    
+    if (x > 10 || x < 0 || y > 10 || y < 0) return false
+    if (orientation == 'horizontal' && y + (currShipLength-1) < 10) {
+      let pathContent = []
+      for (let j = 0; j < currShipLength; j++) {
+        pathContent.push(this.gameboardArray[x][y + j])          
+      }
+      const filtered = pathContent.filter((content) => {return content == null})
+      console.log(pathContent)
+      console.log(filtered)
+      if (filtered.length == pathContent.length) return true
+      return false
+    } else if (orientation == 'vertical' && x + (currShipLength-1) < 10) {
+      let pathContent = []
+      for (let k = 0; k < currShipLength; k++) {
+        pathContent.push(this.gameboardArray[x + k][y])
+      }
+      const filtered = pathContent.filter((content) => {return content == null})
+      console.log(pathContent)
+      console.log(filtered)
+      if (filtered.length == pathContent.length) return true
+      return false
+    } else {
+      return false
+    }
+  }
+  
+  receiveAttack(coords) {
+    let currShipPosIndexHit = 0;
+    const [x, y] = coords;
+    if (this.gameboardArray[x][y] === null) {
+      this.gameboardArray[x][y] = "miss"
+      this.missedAttacks.push([x, y])
+    } else if (this.gameboardArray[x][y] !== null) {
+      let currentShipHit = this.gameboardArray[x][y]
+      let re = new RegExp(currentShipHit, "g");
+      for (let i = 0; i < this.shipsArray.length; i++) {
+        if (this.shipsArray[i].name.match(re)) {
+          currShipPosIndexHit = this.shipsArray[i]['position'].findIndex(pos => pos[0] === x && pos[1] === y)
+          this.shipsArray[i].hit(currShipPosIndexHit)
+        }
+      }
+      this.gameboardArray[x][y] = "X"      
+    } else {
+      return false
+    }
+    return {
+      "gameboardArray": this.gameboardArray,
+      "shipsArray": this.shipsArray,
+      "missedAttacks": this.missedAttacks
+    }
+  }
+  
+  isGameOver() {
+    for (let i = 0; i < this.shipsArray.length; i++) {
+      if (this.shipsArray[i].isSunk() === false) return false
+    }
+    return true
   }
 }
-
-const createDOM = new DOM()
-createDOM.DOMGameboard(player1, playerSpace)
-createDOM.DOMAddShips(player1, playerAddShipSpace)
-
-const cells = document.querySelectorAll(".player-cell")
-const carrier = document.querySelector("#carrier")
-const battleship = document.querySelector("#battleship")
-const destroyer = document.querySelector("#destroyer")
-const submarine = document.querySelector("#submarine")
-const patrol_boat = document.querySelector("#patrol-boat")
-
-helper.dragShip(carrier)
-helper.dragShip(battleship)
-helper.dragShip(destroyer)
-helper.dragShip(submarine)
-helper.dragShip(patrol_boat)
-
-createDOM.DOMDropShips(cells)
-/*TEST FUNCTIONS*/
-
-
-
-
