@@ -320,7 +320,7 @@ class Ships {
   const battleship = document.querySelector("#battleship")
   const destroyer = document.querySelector("#destroyer")
   const submarine = document.querySelector("#submarine")
-  const patrol_boat = document.querySelector("#patrol-boat")
+  const patrol_boat = document.querySelector("#patrol-boat") 
   
   
   helper.dragShip(carrier)
