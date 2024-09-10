@@ -26,6 +26,7 @@ Open Items:
 1. Connect gameboard DOM with gameboard object's gameboardArray
   - Helper method for AI
     -- Place ship of AI randomly
+    -- Change display of Start Game button to none once AI board setup is done to avoid from redundant press
   - Function that will update board each turn
     -- hit
     -- miss
