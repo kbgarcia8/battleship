@@ -363,6 +363,7 @@ class Helper {
 
 /*INDEX.JS starts here*/
 
+
 const player1 = new Player("player")
 const helper = new Helper()
 const playerSpace = document.querySelector(".player-board")
@@ -374,11 +375,18 @@ playerDOM.DOMGameboard(playerSpace)
 playerDOM.DOMAddShips(playerAddShipContainer)
 
 const playerCells = document.querySelectorAll(".player-cell")
+
+const playerDOM = new DOM(player1,helper)
+playerDOM.DOMGameboard(playerSpace)
+playerDOM.DOMAddShips(playerAddShipContainer)
+
+const playerCells = document.querySelectorAll(".player-cell")
 const carrier = document.querySelector("#carrier")
 const battleship = document.querySelector("#battleship")
 const destroyer = document.querySelector("#destroyer")
 const submarine = document.querySelector("#submarine")
 const patrol_boat = document.querySelector("#patrol-boat")
+
 
 helper.dragShip(carrier)
 helper.dragShip(battleship)
