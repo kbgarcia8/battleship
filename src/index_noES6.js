@@ -292,8 +292,6 @@ class DOM {
         console.log(`Initial position at [${x},${y}] ${randomOrientation}ly`)
         cells.forEach((cell) => {
           if((cell.dataset.x == x)&&(cell.dataset.y == y)&&(randomOrientation == "horizontal")) {
-            //const cell = target
-            console.log(cell)
             cell.setAttribute("data-in", ship.name)
             cell.classList.add(ship.name)
             let i = 0;
@@ -369,12 +367,6 @@ const helper = new Helper()
 const playerSpace = document.querySelector(".player-board")
 const playerAddShipContainer = document.querySelector(".ships-container")
 const playerAddShipSpace = document.querySelector(".ships-for-add")
-
-const playerDOM = new DOM(player1,helper)
-playerDOM.DOMGameboard(playerSpace)
-playerDOM.DOMAddShips(playerAddShipContainer)
-
-const playerCells = document.querySelectorAll(".player-cell")
 
 const playerDOM = new DOM(player1,helper)
 playerDOM.DOMGameboard(playerSpace)
