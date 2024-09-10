@@ -24,8 +24,6 @@ Repository Reference/s:
 
 Open Items:
 1. Connect gameboard DOM with gameboard object's gameboardArray
-  - For fix:
-    -- Overlapping ships
   - Helper method for AI
     -- Place ship of AI randomly
   - Function that will update board each turn
