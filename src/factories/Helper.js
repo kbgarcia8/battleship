@@ -23,14 +23,6 @@ export class Helper {
       return false
     }
   }
-  startGame(button,container,containerParent,AIContainer){
-    button.addEventListener("click", (e) => {
-      if(this.IsAllShipsPlaced(container)) {
-        containerParent.setAttribute("style", 'display: none;')
-        AIContainer.setAttribute("style", 'display: flex;')
-      }        
-    })
-  }
   changeOrientation(element) {
     element.addEventListener("dblclick", (e) => {
       e.preventDefault()
