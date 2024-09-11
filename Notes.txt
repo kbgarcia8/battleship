@@ -23,18 +23,11 @@ Repository Reference/s:
 2. https://github.com/jcccc4/battleship/blob/main/src/style.css
 
 Open Items:
-1. Connect gameboard DOM with gameboard object's gameboardArray
-  - Helper method for AI
-    -- Place ship of AI randomly
-      --- Reflect in gameboardArray - done
-      --- Reflect in AIDOM - ongoing
-    -- Change display of Start Game button to none once AI board setup is done to avoid from redundant press
-  - Function that will update board each turn
+1. Function that will update board each turn and after assessment for each action
+2. Play game function
+  - Sequence
+    -- Add eventlistener click to each cell of AI board
     -- hit
     -- miss
     -- sunk
     -- gameover
-2. Create DOM.js
-  - Creation of gameboard is simultaneous between dom and object
-  - All other functions is proposed to be this way:
-    -- Executed through DOM.js then simultaneously executing a factory function
