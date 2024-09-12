@@ -293,21 +293,25 @@ class DOM {
         cells.forEach((cell) => {
           if((cell.dataset.x == x)&&(cell.dataset.y == y)&&(randomOrientation == "horizontal")) {
             cell.setAttribute("data-in", ship.name)
+            cell.setAttribute('style', 'border: white 1px solid; background-color: transparent;')
             cell.classList.add(ship.name)
             let i = 0;
             while (i < ship.length - 1) {
               cell = cell.nextSibling;
               cell.setAttribute("data-in", ship.name)
+              cell.setAttribute('style', 'border: white 1px solid; background-color: transparent;')
               cell.classList.add(ship.name)
               i++;
             }
           } else if((cell.dataset.x == x)&&(cell.dataset.y == y)&&(randomOrientation == "vertical")) {
             cell.setAttribute("data-in", ship.name)
+            cell.setAttribute('style', 'border: white 1px solid; background-color: transparent;')
             cell.classList.add(ship.name)
             let i = 0;
             while (i < ship.length - 1) {
               cell = cell.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling; //try the next 10 sibling
               cell.setAttribute("data-in", ship.name)
+              cell.setAttribute('style', 'border: white 1px solid; background-color: transparent;')
               cell.classList.add(ship.name)
               i++;
             }
@@ -318,6 +322,7 @@ class DOM {
     }
     
   }
+  DOMUpdateboard(){}
 }
 
 class Helper {
@@ -399,23 +404,44 @@ const AISpace = document.querySelector(".ai-board")
 const AIDOM = new DOM(AIPlayer,helper)
 
 const startGameBtn = document.querySelector(".start-game-btn")
-function startGame(button,containerParent,AIContainer){
+//PLAY GAME functions
+function startGame(button,container,containerParent,AIContainer){
 button.addEventListener("click", (e) => {
-  //if(this.IsAllShipsPlaced(container)) {
+  //if(helper.IsAllShipsPlaced(container)) {
     containerParent.setAttribute("style", 'display: none;')
     AIContainer.setAttribute("style", 'display: flex;')
     AIDOM.DOMGameboard(AISpace)
     const AICells = document.querySelectorAll(".ai-cell")
     //randomly place ships of AI in gameboard thru DOM.DOMRandomDropShips method
-    AIDOM.DOMRandomDropShips(AIPlayer.gameboard.shipsArray[0],AICells)
-    AIDOM.DOMRandomDropShips(AIPlayer.gameboard.shipsArray[1],AICells)
-    AIDOM.DOMRandomDropShips(AIPlayer.gameboard.shipsArray[2],AICells)
-    AIDOM.DOMRandomDropShips(AIPlayer.gameboard.shipsArray[3],AICells)
-    AIDOM.DOMRandomDropShips(AIPlayer.gameboard.shipsArray[4],AICells)
-    //console.log(AIPlayer.gameboard.gameboardArray)
-  //} else {console.log("All of player's ship must be placed first")}
+    const ships = AIPlayer.gameboard.shipsArray;
+    ships.forEach((ship) => {
+      AIDOM.DOMRandomDropShips(ship,AICells)
+    })
+    button.setAttribute('style', 'display: none;')
+    //add eventlistener on cells thru playGame function
+    playGame(player1,AIPlayer,playerCells,AICells)
+  //} else {alert("All of player's ship must be placed first")}
 })
 }
 
-startGame(startGameBtn,playerAddShipSpace,AISpaceParent)
+function playGame(player1,player2,player1Cells,player2Cells){
+  player1.startTurn()
+  player2Cells.forEach((player2Cell) => {
+    player2Cell.addEventListener("click", (e) => {
+      console.log(e.target.dataset)
+      let x = e.target.dataset.x
+      let y = e.target.dataset.y
+      let randomX = Math.floor(Math.random()*10)
+      let randomY = Math.floor(Math.random()*10)
+      console.log(`Random: ${randomX},${randomY}`)
+      player1.playerAttack([x,y],player2)
+      player2.playerAttack([randomX,randomY],player1)
+      console.log(player1.gameboard.gameboardArray)
+      console.log(player2.gameboard.gameboardArray)
+      //update board for every attack
+    })
+  })
+}
+
+startGame(startGameBtn,playerAddShipContainer,playerAddShipSpace,AISpaceParent)
 
