@@ -31,3 +31,5 @@ Open Items:
     -- miss
     -- sunk
     -- gameover
+  - Open Items
+    -- update board for every attack
