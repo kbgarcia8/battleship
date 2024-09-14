@@ -138,8 +138,8 @@ class Gameboard {
     if (this.gameboardArray[x][y] === null) {
       this.gameboardArray[x][y] = "miss"
       this.missedAttacks.push([x, y])
-    } else if (this.gameboardArray[x][y] !== null) {
-      let currentShipHit = this.gameboardArray[x][y]
+    } else if (this.gameboardArray[x][y] !== null && this.gameboardArray[x][y] != "X" ) {
+      let currentShipHit = this.gameboardArray[x][y]  
       let re = new RegExp(currentShipHit, "g");
       for (let i = 0; i < this.shipsArray.length; i++) {
         if (this.shipsArray[i].name.match(re)) {
@@ -427,19 +427,32 @@ button.addEventListener("click", (e) => {
 function playGame(player1,player2,player1Cells,player2Cells){
   player1.startTurn()
   player2Cells.forEach((player2Cell) => {
-    player2Cell.addEventListener("click", (e) => {
-      console.log(e.target.dataset)
+    player2Cell.addEventListener("click",function clicked (e) {
+      //console.log(e.target.dataset)
       let x = e.target.dataset.x
       let y = e.target.dataset.y
-      let randomX = Math.floor(Math.random()*10)
-      let randomY = Math.floor(Math.random()*10)
-      console.log(`Random: ${randomX},${randomY}`)
-      player1.playerAttack([x,y],player2)
-      player2.playerAttack([randomX,randomY],player1)
-      console.log(player1.gameboard.gameboardArray)
-      console.log(player2.gameboard.gameboardArray)
+      let randomX = 0
+      let randomY = 0 
+      if(player2.gameboard.missedAttacks.findIndex(coor => coor[0] == x && coor[1] == y) < 0) {
+        player1.playerAttack([x,y],player2)
+        while (true) {
+          randomX = Math.floor(Math.random()*10)
+          randomY = Math.floor(Math.random()*10)
+          console.log(`input ${randomX},${randomY}`)
+          if (player2.gameboard.missedAttacks.findIndex(coor => coor[0] == randomX && coor[1] == randomY) < 0 &&
+          player1.gameboard.receiveAttack([randomX,randomY]) !== false) {            
+            player2.playerAttack([randomX,randomY],player1)
+            //console.log(player1.gameboard.receiveAttack([randomX,randomY]))
+            console.log(`success ${randomX},${randomY}`)
+            break;
+          } else {console.log("already hit")}
+        }        
+        //make attack of AI to execute only when attack, when random coordinate is not yet hit
+        //possible to use player1.gameboard.receiveAttack if it returns false then need to make random attack again
+      } else {console.log("already hit")}
       //update board for every attack
-    })
+      player2Cell.removeEventListener("click", clicked,false)
+    },false)
   })
 }
 
