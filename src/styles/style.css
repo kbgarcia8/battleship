@@ -49,6 +49,10 @@ body {
 .ai-cell {
     display: flex;
     border: white 1px solid;
+    align-items: center; 
+    justify-content: center; 
+    font-size: 75%; 
+    font-weight: 900;
 }
 .ships-for-add{
     height: 100%;
