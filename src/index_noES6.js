@@ -365,8 +365,6 @@ class Helper {
 }
 
 /*INDEX.JS starts here*/
-
-
 const player1 = new Player("player")
 const helper = new Helper()
 const playerSpace = document.querySelector(".player-board")
@@ -417,13 +415,11 @@ button.addEventListener("click", (e) => {
     AIContainer.setAttribute("style", 'display: flex;')
     AIDOM.DOMGameboard(AISpace)
     const AICells = document.querySelectorAll(".ai-cell")
-    //randomly place ships of AI in gameboard thru DOM.DOMRandomDropShips method
     const ships = AIPlayer.gameboard.shipsArray;
     ships.forEach((ship) => {
       AIDOM.DOMRandomDropShips(ship,AICells)
     })
     button.setAttribute('style', 'display: none;')
-    //add eventlistener on cells thru playGame function
     playGame(player1,AIPlayer,playerCells,AICells)
   } else {alert("All of player's ship must be placed first")}
 })
@@ -433,7 +429,6 @@ function playGame(player1,player2,player1Cells,player2Cells){
   player1.startTurn()
   player2Cells.forEach((player2Cell) => {
     player2Cell.addEventListener("click",function clicked (e) {
-      //console.log(e.target.dataset)
       let x = e.target.dataset.x
       let y = e.target.dataset.y
       let randomX = 0
@@ -471,9 +466,7 @@ function playGame(player1,player2,player1Cells,player2Cells){
 }
 
 function updateGameboard(player,playerCells) {
-  //update for cell that has no ship but is marked  
   playerCells.forEach((playerCell) => {
-    //update all data-in based on gameboardArray
     let x = playerCell.dataset.x
     let y = playerCell.dataset.y
     playerCell.setAttribute('data-in', `${player.gameboard.gameboardArray[x][y]}`)
@@ -485,13 +478,11 @@ function updateGameboard(player,playerCells) {
       playerCell.setAttribute('style','background-color: #f55858; border:white 1px solid')
     }
   })
-  //console.log(player.gameboard.gameboardArray)
   console.log("Gameboard updated")
 }
 
 function playAgain(dialog,button) {
   dialog.showModal()
-  //prevent esc key from closing dialog
   dialog.addEventListener("keydown", (e) => {
     console.log(e.keyCode)
     if (e.keyCode == 27) e.preventDefault();
