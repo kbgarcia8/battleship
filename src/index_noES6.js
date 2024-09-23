@@ -444,8 +444,7 @@ function playGame(player1,player2,player1Cells,player2Cells){
           randomX = Math.floor(Math.random()*10)
           randomY = Math.floor(Math.random()*10)
           console.log(`input ${randomX},${randomY}`)
-          if (player1.gameboard.missedAttacks.findIndex(coor => coor[0] == randomX && coor[1] == randomY) < 0) {
-            //need to add a condition to prevent AI from attacking an already hit part of a ship
+          if (player1.gameboard.missedAttacks.findIndex(coor => coor[0] == randomX && coor[1] == randomY) < 0 && player1.gameboard.gameboardArray[randomX][randomY] != "X") {
             console.log(player1.gameboard.missedAttacks)         
             player2.playerAttack([randomX,randomY],player1)
             console.log(`success ${randomX},${randomY}`)
