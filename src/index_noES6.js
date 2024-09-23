@@ -404,10 +404,15 @@ const AISpace = document.querySelector(".ai-board")
 const AIDOM = new DOM(AIPlayer,helper)
 
 const startGameBtn = document.querySelector(".start-game-btn")
+
+const gameWinnerModal = document.querySelector("#gamewinner")
+const winnerText = document.querySelector(".winnertext")
+const playAgainBtn = document.querySelector(".play-again-btn")
+
 //PLAY GAME functions
 function startGame(button,container,containerParent,AIContainer){
 button.addEventListener("click", (e) => {
-  //if(helper.IsAllShipsPlaced(container)) {
+  if(helper.IsAllShipsPlaced(container)) {
     containerParent.setAttribute("style", 'display: none;')
     AIContainer.setAttribute("style", 'display: flex;')
     AIDOM.DOMGameboard(AISpace)
@@ -420,7 +425,7 @@ button.addEventListener("click", (e) => {
     button.setAttribute('style', 'display: none;')
     //add eventlistener on cells thru playGame function
     playGame(player1,AIPlayer,playerCells,AICells)
-  //} else {alert("All of player's ship must be placed first")}
+  } else {alert("All of player's ship must be placed first")}
 })
 }
 
@@ -439,19 +444,28 @@ function playGame(player1,player2,player1Cells,player2Cells){
           randomX = Math.floor(Math.random()*10)
           randomY = Math.floor(Math.random()*10)
           console.log(`input ${randomX},${randomY}`)
-          if (player2.gameboard.missedAttacks.findIndex(coor => coor[0] == randomX && coor[1] == randomY) < 0) {            
+          if (player1.gameboard.missedAttacks.findIndex(coor => coor[0] == randomX && coor[1] == randomY) < 0) {
+            //need to add a condition to prevent AI from attacking an already hit part of a ship
+            console.log(player1.gameboard.missedAttacks)         
             player2.playerAttack([randomX,randomY],player1)
-            //console.log(player1.gameboard.receiveAttack([randomX,randomY]))
             console.log(`success ${randomX},${randomY}`)
             break;
           } else {console.log("already hit")}
         }
       } else {console.log("already hit")}
-      //update board for every attack
       updateGameboard(player1,player1Cells)
       updateGameboard(player2,player2Cells)
-      console.log(`${[player1.name]}: ${player1.gameboard.isGameOver()}`)
-      console.log(`${[player2.name]}: ${player2.gameboard.isGameOver()}`)
+      if(player1.gameboard.isGameOver()) {
+        console.log(`${[player2.name]} wins!`)
+        winnerText.textContent = `${[player2.name]} wins!`
+        playAgain(gameWinnerModal,playAgainBtn)
+      } else if (player2.gameboard.isGameOver()) {
+        winnerText.textContent = `${[player1.name]} wins!`
+        playAgain(gameWinnerModal,playAgainBtn)
+      } else {
+        console.log("No winner please continue attacking")
+      }
+      
       player2Cell.removeEventListener("click", clicked,false)
     },false)
   })
@@ -472,7 +486,20 @@ function updateGameboard(player,playerCells) {
       playerCell.setAttribute('style','background-color: #f55858; border:white 1px solid')
     }
   })
+  //console.log(player.gameboard.gameboardArray)
   console.log("Gameboard updated")
+}
+
+function playAgain(dialog,button) {
+  dialog.showModal()
+  //prevent esc key from closing dialog
+  dialog.addEventListener("keydown", (e) => {
+    console.log(e.keyCode)
+    if (e.keyCode == 27) e.preventDefault();
+  })
+  button.addEventListener("click", (e) => {
+    location.reload()
+  })
 }
 
 startGame(startGameBtn,playerAddShipContainer,playerAddShipSpace,AISpaceParent)
