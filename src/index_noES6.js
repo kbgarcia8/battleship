@@ -319,10 +319,23 @@ class DOM {
         })
         break
       }
-    }
-    
+    }    
   }
-  DOMUpdateboard(){}
+  DOMUpdateGameboard(player,playerCells) {
+    playerCells.forEach((playerCell) => {
+      let x = playerCell.dataset.x
+      let y = playerCell.dataset.y
+      playerCell.setAttribute('data-in', `${player.gameboard.gameboardArray[x][y]}`)
+      if(player.gameboard.gameboardArray[x][y] == "miss") {
+        playerCell.textContent = "X"
+        playerCell.setAttribute('style','background-color: #87aeed;')
+      } else if(player.gameboard.gameboardArray[x][y] == "X") {
+        playerCell.textContent = "X"
+        playerCell.setAttribute('style','background-color: #f55858; border:white 1px solid')
+      }
+    })
+    console.log("Gameboard updated")
+  }
 }
 
 class Helper {
@@ -409,20 +422,20 @@ const playAgainBtn = document.querySelector(".play-again-btn")
 
 //PLAY GAME functions
 function startGame(button,container,containerParent,AIContainer){
-button.addEventListener("click", (e) => {
-  if(helper.IsAllShipsPlaced(container)) {
-    containerParent.setAttribute("style", 'display: none;')
-    AIContainer.setAttribute("style", 'display: flex;')
-    AIDOM.DOMGameboard(AISpace)
-    const AICells = document.querySelectorAll(".ai-cell")
-    const ships = AIPlayer.gameboard.shipsArray;
-    ships.forEach((ship) => {
-      AIDOM.DOMRandomDropShips(ship,AICells)
-    })
-    button.setAttribute('style', 'display: none;')
-    playGame(player1,AIPlayer,playerCells,AICells)
-  } else {alert("All of player's ship must be placed first")}
-})
+  button.addEventListener("click", (e) => {
+    if(helper.IsAllShipsPlaced(container)) {
+      containerParent.setAttribute("style", 'display: none;')
+      AIContainer.setAttribute("style", 'display: flex;')
+      AIDOM.DOMGameboard(AISpace)
+      const AICells = document.querySelectorAll(".ai-cell")
+      const ships = AIPlayer.gameboard.shipsArray;
+      ships.forEach((ship) => {
+        AIDOM.DOMRandomDropShips(ship,AICells)
+      })
+      button.setAttribute('style', 'display: none;')
+      playGame(player1,AIPlayer,playerCells,AICells)
+    } else {alert("All of player's ship must be placed first")}
+  })
 }
 
 function playGame(player1,player2,player1Cells,player2Cells){
@@ -447,8 +460,8 @@ function playGame(player1,player2,player1Cells,player2Cells){
           } else {console.log("already hit")}
         }
       } else {console.log("already hit")}
-      updateGameboard(player1,player1Cells)
-      updateGameboard(player2,player2Cells)
+      playerDOM.DOMUpdateGameboard(player1,player1Cells)
+      AIDOM.DOMUpdateGameboard(player2,player2Cells)
       if(player1.gameboard.isGameOver()) {
         console.log(`${[player2.name]} wins!`)
         winnerText.textContent = `${[player2.name]} wins!`
@@ -463,22 +476,6 @@ function playGame(player1,player2,player1Cells,player2Cells){
       player2Cell.removeEventListener("click", clicked,false)
     },false)
   })
-}
-
-function updateGameboard(player,playerCells) {
-  playerCells.forEach((playerCell) => {
-    let x = playerCell.dataset.x
-    let y = playerCell.dataset.y
-    playerCell.setAttribute('data-in', `${player.gameboard.gameboardArray[x][y]}`)
-    if(player.gameboard.gameboardArray[x][y] == "miss") {
-      playerCell.textContent = "X"
-      playerCell.setAttribute('style','background-color: #87aeed;')
-    } else if(player.gameboard.gameboardArray[x][y] == "X") {
-      playerCell.textContent = "X"
-      playerCell.setAttribute('style','background-color: #f55858; border:white 1px solid')
-    }
-  })
-  console.log("Gameboard updated")
 }
 
 function playAgain(dialog,button) {

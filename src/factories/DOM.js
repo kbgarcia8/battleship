@@ -1,9 +1,8 @@
-export class DOM {
+class DOM {
   constructor(player, helper) {
     this.player = player,
     this.helper = helper
-  }
-
+  }  
   DOMGameboard(parent) {
     for (let x = 0; x < this.player.gameboard.gameboardArray.length; x++) {
       for (let y = 0; y < this.player.gameboard.gameboardArray[x].length; y++) {
@@ -78,5 +77,62 @@ export class DOM {
         }
       })
     })
+  }
+  DOMRandomDropShips(ship,cells){
+    while(true) {
+      let x = Math.floor(Math.random()*10)
+      let y = Math.floor(Math.random()*10)
+      let coords = [x,y]
+      let orientaions = ['horizontal', 'vertical']
+      let randomOrientation = orientaions[Math.floor(Math.random() * orientaions.length)]
+      
+      if(this.player.gameboard.placeShip(ship.name,coords,randomOrientation)) {
+        //put here process on how to reflect ships in game board (do it per ship)
+        console.log(`Initial position at [${x},${y}] ${randomOrientation}ly`)
+        cells.forEach((cell) => {
+          if((cell.dataset.x == x)&&(cell.dataset.y == y)&&(randomOrientation == "horizontal")) {
+            cell.setAttribute("data-in", ship.name)
+            cell.setAttribute('style', 'border: white 1px solid; background-color: transparent;')
+            cell.classList.add(ship.name)
+            let i = 0;
+            while (i < ship.length - 1) {
+              cell = cell.nextSibling;
+              cell.setAttribute("data-in", ship.name)
+              cell.setAttribute('style', 'border: white 1px solid; background-color: transparent;')
+              cell.classList.add(ship.name)
+              i++;
+            }
+          } else if((cell.dataset.x == x)&&(cell.dataset.y == y)&&(randomOrientation == "vertical")) {
+            cell.setAttribute("data-in", ship.name)
+            cell.setAttribute('style', 'border: white 1px solid; background-color: transparent;')
+            cell.classList.add(ship.name)
+            let i = 0;
+            while (i < ship.length - 1) {
+              cell = cell.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling; //try the next 10 sibling
+              cell.setAttribute("data-in", ship.name)
+              cell.setAttribute('style', 'border: white 1px solid; background-color: transparent;')
+              cell.classList.add(ship.name)
+              i++;
+            }
+          }
+        })
+        break
+      }
+    }    
+  }
+  DOMUpdateGameboard(player,playerCells) {
+    playerCells.forEach((playerCell) => {
+      let x = playerCell.dataset.x
+      let y = playerCell.dataset.y
+      playerCell.setAttribute('data-in', `${player.gameboard.gameboardArray[x][y]}`)
+      if(player.gameboard.gameboardArray[x][y] == "miss") {
+        playerCell.textContent = "X"
+        playerCell.setAttribute('style','background-color: #87aeed;')
+      } else if(player.gameboard.gameboardArray[x][y] == "X") {
+        playerCell.textContent = "X"
+        playerCell.setAttribute('style','background-color: #f55858; border:white 1px solid')
+      }
+    })
+    console.log("Gameboard updated")
   }
 }

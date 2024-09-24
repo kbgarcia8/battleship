@@ -1,4 +1,4 @@
-export class Helper {
+class Helper {
   checkOrientation(element) {
       let shipOrientation = null;
       if (element.classList.contains("horizontal")) {
@@ -22,7 +22,7 @@ export class Helper {
     } else {
       return false
     }
-  }
+  }    
   changeOrientation(element) {
     element.addEventListener("dblclick", (e) => {
       e.preventDefault()

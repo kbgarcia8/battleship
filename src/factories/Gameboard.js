@@ -106,8 +106,8 @@ export class Gameboard {
     if (this.gameboardArray[x][y] === null) {
       this.gameboardArray[x][y] = "miss"
       this.missedAttacks.push([x, y])
-    } else if (this.gameboardArray[x][y] !== null) {
-      let currentShipHit = this.gameboardArray[x][y]
+    } else if (this.gameboardArray[x][y] !== null && this.gameboardArray[x][y] !== "X" ) {
+      let currentShipHit = this.gameboardArray[x][y]  
       let re = new RegExp(currentShipHit, "g");
       for (let i = 0; i < this.shipsArray.length; i++) {
         if (this.shipsArray[i].name.match(re)) {
@@ -115,7 +115,7 @@ export class Gameboard {
           this.shipsArray[i].hit(currShipPosIndexHit)
         }
       }
-      this.gameboardArray[x][y] = "X"      
+      this.gameboardArray[x][y] = "X"
     } else {
       return false
     }
