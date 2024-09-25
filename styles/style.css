@@ -49,6 +49,10 @@ body {
 .ai-cell {
     display: flex;
     border: white 1px solid;
+    align-items: center; 
+    justify-content: center; 
+    font-size: 75%; 
+    font-weight: 900;
 }
 .ships-for-add{
     height: 100%;
@@ -64,8 +68,9 @@ body {
     display: flex;
     align-content: center;
     justify-content: center;
+    text-align: center;
     color: #ffff;
-    font-size: 4vh;
+    font-size: 3.5vh;
     font-weight: 900;
 }
 .ships-container{
@@ -78,65 +83,49 @@ body {
     padding: 5%;
     border: 5px yellow solid;
 }
-.carrier-container{
-    display: flex;
-    border: 2.5px solid rgb(109, 0, 0);
+.carrier-container,
+.battleship-container,
+.destroyer-container,
+.submarine-container,
+.patrol-boat-container{
     width: fit-content;
     margin: 5%;
 }
 .carrier{
     width: 3.5vw;
     height: 7vh;
-    border: 2.5px solid rgb(109, 0, 0);
+    border: 5px solid rgb(109, 0, 0); 
     background-color: rgb(243, 95, 95);
-}
-.battleship-container{
-    display: flex;
-    border: 2.5px solid rgb(0, 59, 0);
-    width: fit-content;
-    margin: 5%;
 }
 .battleship{
     width: 3.5vw;
     height: 7vh;
-    border: 2.5px solid rgb(4, 109, 0);
+    border: 5px solid  rgb(4, 109, 0);
     background-color: rgb(80, 177, 80);
-}
-.destroyer-container{
-    display: flex;
-    border: 2.5px solid rgb(0, 9, 59);
-    width: fit-content;
-    margin: 5%;
 }
 .destroyer{
     width: 3.5vw;
     height: 7vh;
-    border: 2.5px solid rgb(0, 2, 109);
+    border: 5px solid  rgb(0, 2, 109);
     background-color: rgb(80, 103, 177);
-}
-.submarine-container{
-    display: flex;
-    border: 2.5px solid rgb(59, 58, 0);
-    width: fit-content;
-    margin: 5%;
 }
 .submarine{
     width: 3.5vw;
     height: 7vh;
-    border: 2.5px solid rgb(98, 109, 0);
+    border: 5px solid  rgb(98, 109, 0);
     background-color: rgb(162, 177, 80);
-}
-.patrol-boat-container{
-    display: flex;
-    border: 2.5px solid rgb(35, 0, 59);
-    width: fit-content;
-    margin: 5%;
 }
 .patrol-boat{
     width: 3.5vw;
     height: 7vh;
-    border: 2.5px solid rgb(74, 0, 109);
+    border: 5px solid  rgb(74, 0, 109);
     background-color: rgb(141, 80, 177);
+}
+.horizontal{
+    display: flex;
+}
+.vertical{
+    display: block;
 }
 .ai-side{
     height: 100%;
@@ -147,6 +136,52 @@ body {
     background-color: #007EA7;
     grid-column: 2/3;
     grid-row: 2/3;
+}
+dialog#gamewinner {
+    border-radius: 2.5%;
+    padding: 2%;
+    width: 35%;
+    height: 30%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    justify-content: center;
+    background-color: #005070;
+    -webkit-box-shadow: 10px 13px 5px 10px rgba(235,228,235,0.35);
+-moz-box-shadow: 10px 13px 5px 10px rgba(235,228,235,0.35);
+box-shadow: 10px 13px 5px 10px rgba(235,228,235,0.35);
+}
+dialog[open] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+dialog::backdrop {
+    background-image: linear-gradient(
+      45deg,
+      #1167b1,
+      #187bcd,
+      #2a9df4,
+      #d0efff
+    );
+    opacity: 0.75;
+  }
+.winnertext{
+    text-align: center;
+    font-weight: 900;
+    color: white;
+}
+.play-again-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+    width: 50%;
+    font-size: 75%;
+    font-weight: 900;
+    border-radius: 5%;    
 }
 .button-space{
     background-color: #0082b6;
