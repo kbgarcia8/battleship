@@ -6,8 +6,17 @@ module.exports = {
   entry: './src/index.js',
   //watch: true,
   plugins: [
-    new HtmlWebpackPlugin(),
-    new CopyPlugin({ //plug-in if dependencies are in a folder, downside is not in hash. Takes up space
+    new HtmlWebpackPlugin({
+      hash: true,
+      title: 'Battleship Game',
+      header: 'Battleship',
+      metaDesc: 'Battleship Game',
+      template: './src/index.html',
+      filename: 'index.html',
+      inject: 'body',
+      scriptLoading: 'defer'
+    }),
+    new CopyPlugin({
       patterns: [
         { from: "src/styles", to: "styles" },
         { from: "src/factories", to: "factories" }
@@ -39,9 +48,4 @@ module.exports = {
       },
     ],
   },
-  /*watchOptions: {
-    aggregateTimeout: 200,
-    poll: 1000,
-  },*/
-
 };

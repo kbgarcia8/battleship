@@ -14,15 +14,19 @@
     "url": "git+https://github.com/kbgarcia8/battleship.git"
   },
   "keywords": [
-    "import"
+    "battleship",
+    "playerVsAI"
   ],
-  "author": "<author_name>",
+  "author": "KB Garcia",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kbgarcia8/battleship/issues"
   },
   "homepage": "https://github.com/kbgarcia8/battleship#readme",
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "babel-loader": "^9.2.1",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",

@@ -2,7 +2,6 @@ import { Player } from "./factories/Player.js"
 import { DOM } from "./factories/DOM.js"
 import { Helper } from "./factories/Helper.js"
 
-
 const player1 = new Player("player")
 const helper = new Helper()
 const playerSpace = document.querySelector(".player-board")
@@ -45,7 +44,6 @@ const gameWinnerModal = document.querySelector("#gamewinner")
 const winnerText = document.querySelector(".winnertext")
 const playAgainBtn = document.querySelector(".play-again-btn")
 
-//PLAY GAME functions
 function startGame(button,container,containerParent,AIContainer){
   button.addEventListener("click", (e) => {
     if(helper.IsAllShipsPlaced(container)) {
@@ -76,11 +74,8 @@ function playGame(player1,player2,player1Cells,player2Cells){
         while (true) {
           randomX = Math.floor(Math.random()*10)
           randomY = Math.floor(Math.random()*10)
-          console.log(`input ${randomX},${randomY}`)
-          if (player1.gameboard.missedAttacks.findIndex(coor => coor[0] == randomX && coor[1] == randomY) < 0 && player1.gameboard.gameboardArray[randomX][randomY] != "X") {
-            console.log(player1.gameboard.missedAttacks)         
+          if (player1.gameboard.missedAttacks.findIndex(coor => coor[0] == randomX && coor[1] == randomY) < 0 && player1.gameboard.gameboardArray[randomX][randomY] != "X") {   
             player2.playerAttack([randomX,randomY],player1)
-            console.log(`success ${randomX},${randomY}`)
             break;
           } else {console.log("already hit")}
         }
@@ -88,7 +83,6 @@ function playGame(player1,player2,player1Cells,player2Cells){
       playerDOM.DOMUpdateGameboard(player1,player1Cells)
       AIDOM.DOMUpdateGameboard(player2,player2Cells)
       if(player1.gameboard.isGameOver()) {
-        console.log(`${[player2.name]} wins!`)
         winnerText.textContent = `${[player2.name]} wins!`
         playAgain(gameWinnerModal,playAgainBtn)
       } else if (player2.gameboard.isGameOver()) {
@@ -106,7 +100,6 @@ function playGame(player1,player2,player1Cells,player2Cells){
 function playAgain(dialog,button) {
   dialog.showModal()
   dialog.addEventListener("keydown", (e) => {
-    console.log(e.keyCode)
     if (e.keyCode == 27) e.preventDefault();
   })
   button.addEventListener("click", (e) => {

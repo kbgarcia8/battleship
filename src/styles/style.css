@@ -147,7 +147,6 @@ dialog#gamewinner {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     justify-content: center;
-    border: yellow 0.25rem solid;
     background-color: #005070;
     -webkit-box-shadow: 10px 13px 5px 10px rgba(235,228,235,0.35);
 -moz-box-shadow: 10px 13px 5px 10px rgba(235,228,235,0.35);
