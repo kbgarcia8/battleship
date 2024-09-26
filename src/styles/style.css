@@ -81,7 +81,6 @@ body {
     width: 95%;
     height: 95%;
     padding: 5%;
-    border: 5px yellow solid;
 }
 .carrier-container,
 .battleship-container,
@@ -149,14 +148,16 @@ dialog#gamewinner {
     justify-content: center;
     background-color: #005070;
     -webkit-box-shadow: 10px 13px 5px 10px rgba(235,228,235,0.35);
--moz-box-shadow: 10px 13px 5px 10px rgba(235,228,235,0.35);
-box-shadow: 10px 13px 5px 10px rgba(235,228,235,0.35);
+    -moz-box-shadow: 10px 13px 5px 10px rgba(235,228,235,0.35);
+    box-shadow: 10px 13px 5px 10px rgba(235,228,235,0.35);
+
 }
 dialog[open] {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    animation: fade 0.5s ease-in forwards;
 }
 dialog::backdrop {
     background-image: linear-gradient(
@@ -168,6 +169,14 @@ dialog::backdrop {
     );
     opacity: 0.75;
   }
+@keyframes fade{
+    0%{
+      opacity:0;
+    }
+    100%{
+      opacity:1;
+    }
+}
 .winnertext{
     text-align: center;
     font-weight: 900;

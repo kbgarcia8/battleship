@@ -87,8 +87,6 @@ export class DOM {
       let randomOrientation = orientaions[Math.floor(Math.random() * orientaions.length)]
       
       if(this.player.gameboard.placeShip(ship.name,coords,randomOrientation)) {
-        //put here process on how to reflect ships in game board (do it per ship)
-        console.log(`Initial position at [${x},${y}] ${randomOrientation}ly`)
         cells.forEach((cell) => {
           if((cell.dataset.x == x)&&(cell.dataset.y == y)&&(randomOrientation == "horizontal")) {
             cell.setAttribute("data-in", ship.name)
