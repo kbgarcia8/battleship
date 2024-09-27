@@ -1,7 +1,7 @@
 # Battlesship Webpage
 This is web page to play the game "Battleship" developed using HTML, CSS and Javascript
 ### Type: Learning
-### Status: In progress
+### Status: Done
 ### Start Date: 08/21/2024
 ### Finish Date: 09/26/2024
 
